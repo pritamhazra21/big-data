@@ -357,3 +357,40 @@ An output format specifies how the results of the MapReduce job are written or s
 4. MultipleOutputs: This feature allows writing output to different files or directories based on specific criteria. It enables multiple output formats to be used within a single MapReduce job.
 
 By specifying appropriate input and output formats, MapReduce jobs can efficiently process data in various formats and interact with different storage systems. These formats provide flexibility and customization options for handling different types of input and output data in a MapReduce workflow.
+
+## DIfferent types of failure
+
+In Hadoop and YARN, various types of failures can occur due to hardware issues, software errors, network problems, or other unexpected events. These failures can impact the availability, reliability, and performance of the cluster. Here are some common types of failures that can occur in Hadoop and YARN:
+
+1. Node Failure:
+
+- Node failures refer to the failure of individual machines (nodes) in the cluster due to hardware faults, power outages, or operating system crashes.
+- When a node fails, the tasks running on that node are interrupted and need to be rescheduled on other available nodes.
+- The Resource Manager (YARN) detects node failures through periodic heartbeat messages from Node Managers and takes necessary actions to recover or redistribute resources.
+2. Task Failure:
+
+- Task failures occur when individual tasks fail to complete successfully due to errors in processing, software bugs, or data corruption.
+- Task failures can be caused by application-specific issues, such as programming errors or incompatible data formats.
+- When a task fails, the Application Master (YARN) can retry the failed task on the same or different node, depending on the configured retry policies.
+3. Application Master Failure:
+
+- The Application Master (AM) manages the execution of a specific application or job in YARN.
+- If the Application Master fails due to software errors, resource exhaustion, or other reasons, the job progress is affected.
+- YARN provides mechanisms to detect AM failures and restart the AM on a different node to resume the execution of the application.
+4. Resource Manager Failure:
+
+- The Resource Manager (RM) is the central component of YARN responsible for resource allocation and job scheduling.
+- If the RM fails, the cluster's resource allocation and job management capabilities are affected.
+- To ensure fault tolerance, YARN supports High Availability (HA) mode where multiple RMs are configured in an active-standby setup. If the active RM fails, the standby RM takes over seamlessly to continue cluster operations.
+5. Network Failure:
+
+- Network failures can disrupt communication between components in the cluster, affecting the coordination and data transfer between nodes.
+- Network failures can lead to delays, timeouts, or loss of connectivity, impacting the overall performance and reliability of the cluster.
+- YARN and Hadoop have mechanisms to handle network failures, including retrying failed communications, detecting and handling timeouts, and ensuring data integrity during transmission.
+6. Data Corruption:
+
+- Data corruption can occur due to hardware faults, software bugs, or issues during data storage or transfer.
+- Data corruption can lead to incorrect computation results, data loss, or job failures.
+- Hadoop and YARN employ mechanisms like data replication, checksums, and fault tolerance techniques (such as HDFS block replication) to detect and recover from data corruption.
+
+To mitigate the impact of failures, Hadoop and YARN employ fault tolerance mechanisms, such as automatic recovery, task re-execution, redundancy, and resource management strategies. These mechanisms help ensure the reliable and continuous operation of the cluster, even in the presence of failures.
