@@ -384,3 +384,162 @@ TRUNCATE TABLE [database_name.]table_name;
 ```
 
 These DDL statements provide the necessary tools to define and manipulate tables, databases, partitions, and their properties in Hive. They allow you to create and manage the data structures needed for data storage and querying in Hive.
+
+## HiveQL data manipulation
+
+In HiveQL (Hive Query Language), you can manipulate data using Data Manipulation Language (DML) statements. HiveQL provides several DML statements to insert, update, delete, and query data in Hive tables. Here are the commonly used DML statements in HiveQL for data manipulation:
+
+1. Insert into Table:
+
+The INSERT INTO statement is used to insert data into a table.
+Syntax:
+```
+INSERT INTO [TABLE] [database_name.]table_name [PARTITION (partition_spec)]
+[VALUES (value_expr, ...), ...]
+[SELECT ...]
+
+```
+2. Update Table:
+
+Hive does not support direct updates to existing records. Instead, you can use the INSERT INTO ... SELECT statement with appropriate logic to create a new table with updated data.
+Syntax:
+```
+INSERT INTO [TABLE] [database_name.]new_table_name [PARTITION (partition_spec)]
+SELECT ...
+
+```
+3. Delete from Table:
+
+Hive does not support direct deletion of individual records. Instead, you can use the INSERT INTO ... SELECT statement with appropriate logic to create a new table excluding the records you want to delete.
+Syntax:
+```
+INSERT INTO [TABLE] [database_name.]new_table_name [PARTITION (partition_spec)]
+SELECT ...
+
+```
+4. Select from Table:
+
+The SELECT statement is used to query data from one or more tables.
+Syntax:
+```
+SELECT [ALL | DISTINCT] select_expr [, select_expr, ...]
+FROM [database_name.]table_name
+[WHERE condition]
+[GROUP BY col_name [, col_name, ...]]
+[HAVING condition]
+[ORDER BY col_name [ASC | DESC] [, col_name [ASC | DESC], ...]]
+[LIMIT n]
+
+```
+5. Join Tables:
+
+Hive supports different types of joins such as INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN, etc., to combine data from multiple tables.
+Syntax:
+```
+SELECT ...
+FROM table_name1
+[INNER | LEFT | RIGHT [OUTER] | FULL [OUTER]] JOIN table_name2
+ON table_name1.col_name = table_name2.col_name
+
+```
+6. Union Tables:
+
+The UNION statement is used to combine the result sets of multiple SELECT statements into a single result set.
+Syntax:
+```
+SELECT ...
+FROM table_name1
+UNION [ALL]
+SELECT ...
+FROM table_name2
+
+```
+7. Aggregation Functions:
+
+Hive provides various built-in aggregation functions such as SUM, AVG, MIN, MAX, COUNT, etc., to perform calculations on groups of data.
+Syntax:
+```
+SELECT aggregation_function(column_name)
+FROM table_name
+[GROUP BY column_name]
+
+```
+8. Subqueries:
+
+Hive supports subqueries, allowing you to use the result of one query as input for another query.
+Syntax:
+```
+SELECT ...
+FROM table_name
+WHERE column_name IN (SELECT column_name FROM another_table)
+
+```
+
+These DML statements provide the necessary tools to manipulate and query data in Hive tables. They allow you to insert, update, delete, and retrieve data from tables using various filtering, aggregation, and joining techniques.
+
+## HiveQL queries
+
+HiveQL (Hive Query Language) is a SQL-like language that allows you to query and analyze data stored in Hive tables. HiveQL supports a wide range of SQL operations and provides additional features specific to the Hadoop ecosystem. Here are some examples of common HiveQL queries:
+
+1. Select All Columns from a Table:
+```
+SELECT * FROM table_name;
+```
+1. Select Specific Columns from a Table:
+
+```
+SELECT column1, column2, ... FROM table_name;
+```
+1. Filter Rows with WHERE Clause:
+
+```
+SELECT * FROM table_name WHERE condition;
+```
+1. Aggregation Queries:
+
+- Sum of a Column:
+```
+SELECT SUM(column_name) FROM table_name;
+```
+- Average of a Column:
+```
+SELECT AVG(column_name) FROM table_name;
+```
+- Count of Rows:
+```
+SELECT COUNT(*) FROM table_name;
+```
+1. Grouping and Aggregation:
+```
+SELECT column1, COUNT(column2) FROM table_name GROUP BY column1;
+```
+1. Sorting Rows:
+```
+SELECT * FROM table_name ORDER BY column_name [ASC|DESC];
+```
+1. Joining Tables:
+```
+SELECT * FROM table1 JOIN table2 ON table1.column_name = table2.column_name;
+```
+1. Subqueries:
+```
+SELECT * FROM table1 WHERE column_name IN (SELECT column_name FROM table2 WHERE condition);
+```
+1. Using Built-in Functions:
+```
+SELECT column1, FUNCTION(column2) FROM table_name;
+```
+1. Conditional Statements with CASE:
+```
+SELECT column1, CASE WHEN condition THEN value1 ELSE value2 END FROM table_name;
+```
+1. Limiting Results:
+```
+SELECT * FROM table_name LIMIT n;
+```
+1. Create a New Table from Query Results:
+
+sql
+Copy code
+CREATE TABLE new_table_name AS SELECT * FROM table_name;
+These are just a few examples of HiveQL queries. HiveQL provides a rich set of SQL-like operations and functions to manipulate and analyze data in Hive tables. The queries can be customized and combined to suit specific data analysis and reporting requirements.
