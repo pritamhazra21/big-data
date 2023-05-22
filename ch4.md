@@ -1,7 +1,6 @@
- unit tests with MRUnit, test data and local tests,
-anatomy of MapReduce job run, classic Map-reduce, YARN, failures in classic
-Map-reduce and YARN, job scheduling, shuffle and sort, task execution,
-MapReduce types, input formats, output formats
+ 
+ job scheduling, shuffle and sort, task execution,
+, input formats, output formats
 
 ## 1. MapReduce workflow
 
@@ -90,7 +89,7 @@ When it comes to testing MapReduce jobs using MRUnit, you have a couple of optio
 3. Local testing: MRUnit allows you to execute MapReduce jobs in a local test environment, simulating the MapReduce execution on a single machine. This is useful for running tests quickly and verifying the correctness of your MapReduce code without the need for a full Hadoop cluster. MRUnit provides utilities to set up the local testing environment and execute the MapReduce job using the local runner.
 
 Here's a simple example demonstrating how to use MRUnit for local testing:
-,,,
+```
 
 @RunWith(MockitoJUnitRunner.class)
 public class MyMapReduceTest {
@@ -130,8 +129,111 @@ public class MyMapReduceTest {
     }
 }
 
-
+```
 
 In the above example, MyMapReduceJob represents your actual MapReduce job class, MyMapper and MyReducer represent your mapper and reducer implementations, respectively. You can configure the job, set up the input data, and define the expected output. Then, you can run the test using MRUnit's MapReduceDriver and perform assertions on the output.
 
 By providing test data and running tests locally with MRUnit, you can effectively validate the correctness of your MapReduce code in a controlled and isolated environment.
+
+
+## 6. Anatomy of MapReduce job run
+
+The anatomy of a MapReduce job run consists of several steps that take place from the submission of the job to the completion of its execution. Here's a high-level overview of the key stages involved:
+
+1. Job submission: The MapReduce job is submitted to the cluster for execution. The job submission includes specifying the input and output paths, configuring job parameters, and providing the necessary code (mappers, reducers, etc.).
+
+2. Job initialization: Once the job is submitted, the cluster's resource manager (e.g., YARN) initializes the necessary resources for the job, including allocating containers to run the mappers and reducers.
+
+3. Map phase: The input data is divided into splits, and each split is assigned to a mapper. The mappers read their respective input splits, apply the map function to each input record, and generate intermediate key-value pairs.
+
+4. Shuffle and sort: The intermediate key-value pairs produced by the mappers are partitioned, shuffled, and sorted based on their keys. This ensures that all values for a particular key are grouped together, facilitating the subsequent reduce phase.
+
+5. Reduce phase: The sorted intermediate key-value pairs are input to the reducers. Each reducer processes a subset of the intermediate data, applies the reduce function to the values associated with each key, and generates the final output key-value pairs.
+
+6. Output generation: The output key-value pairs from the reducers are collected and written to the specified output location, typically a distributed file system like HDFS. The output can be in various formats, such as text files, sequence files, or other custom formats.
+
+7. Job completion: Once the output is generated, the MapReduce job is considered complete. The job status is updated, and any final cleanup tasks may be performed.
+
+Throughout the process, the cluster's resource manager monitors the progress of the job, manages task scheduling and allocation, and handles failures by rescheduling or restarting failed tasks.
+
+It's important to note that the actual execution and internal mechanisms may vary depending on the specific MapReduce framework being used, such as Apache Hadoop MapReduce or Apache Spark. Additionally, advanced optimizations and features, like speculative execution or combiners, may be employed to improve performance and fault tolerance in the MapReduce job execution.
+
+## 7. YARN
+
+YARN (Yet Another Resource Negotiator) is a key component of the Apache Hadoop ecosystem that serves as a resource management and job scheduling framework. It provides a flexible and scalable architecture for managing resources and running distributed applications in a Hadoop cluster.
+
+Here are the main features and components of YARN:
+
+1. Resource Manager (RM): The Resource Manager is the central component of YARN and serves as the master of the cluster. It is responsible for resource allocation, monitoring, and scheduling of applications. The RM manages the allocation of cluster resources to different applications and tracks their status.
+
+2. Node Manager (NM): Each node in the Hadoop cluster runs a Node Manager, which is responsible for managing resources on that node. The Node Manager communicates with the Resource Manager to request and release resources, monitor container health, and report node status.
+
+3. Application Master (AM): Each application running on YARN has an Application Master that manages its execution. The Application Master negotiates resources with the Resource Manager, tracks task progress, and coordinates the execution of tasks on the cluster. The AM is specific to the application framework being used (e.g., MapReduce, Spark), and multiple AMs can run concurrently on the cluster.
+
+4. Containers: YARN uses containers as the basic unit of resource allocation. A container represents a specific amount of resources (CPU, memory) on a node and is assigned to execute a specific task or process. Containers are managed by the Node Manager and are allocated by the Resource Manager based on the resource requirements specified by the Application Master.
+
+5. Application Lifecycle: YARN supports the execution of various distributed applications, such as MapReduce, Spark, Hive, and others. It provides a unified framework for running and managing these applications, enabling them to coexist and share cluster resources efficiently. YARN handles the lifecycle of applications, including their submission, resource negotiation, execution, and termination.
+
+6. Scheduling: YARN supports pluggable scheduling policies and allows administrators to choose different scheduling algorithms, such as Capacity Scheduler or Fair Scheduler, based on their specific requirements. These schedulers determine how resources are allocated to different applications and help ensure fair and efficient utilization of the cluster.
+
+YARN decouples resource management from application execution, providing a flexible and scalable platform for running diverse workloads on a Hadoop cluster. It enables efficient utilization of cluster resources, improves multi-tenancy support, and supports a wide range of data processing frameworks and applications in the Hadoop ecosystem.
+
+## 8. MapReduce and YARN
+
+MapReduce and YARN are two closely related components in the Apache Hadoop ecosystem, but they serve distinct purposes and work together to enable distributed data processing in a Hadoop cluster.
+
+1. MapReduce: MapReduce is a programming model and framework for processing and analyzing large-scale data sets in a distributed computing environment. It provides a high-level abstraction for developers to write parallelizable code that can be executed on a cluster of machines. MapReduce breaks down the processing task into two main phases: the map phase and the reduce phase. It handles task scheduling, fault tolerance, and data distribution across the cluster. MapReduce was originally introduced by Google and is implemented in Apache Hadoop as Hadoop MapReduce.
+
+2. YARN (Yet Another Resource Negotiator): YARN is the resource management and job scheduling framework in the Apache Hadoop ecosystem. It serves as the cluster operating system and provides a flexible and scalable platform for running various distributed applications, including MapReduce. YARN decouples the resource management functionality from the application-specific logic, allowing different application frameworks to coexist and share cluster resources efficiently. YARN consists of a Resource Manager (RM), which manages the overall resource allocation and scheduling, and Node Managers (NMs), which run on each node in the cluster and manage resources on that node. YARN allows multiple applications to run simultaneously, dynamically allocating resources based on demand.
+
+How MapReduce and YARN work together:
+
+When a MapReduce job is submitted to the cluster, the Resource Manager (RM) in YARN receives the job request.
+- The RM negotiates resources with the job's Application Master (AM), which is responsible for managing the execution of the MapReduce job.
+- The RM allocates containers (resource units) to the AM for running the mappers and reducers of the MapReduce job.
+- The AM, in coordination with the RM, launches the map tasks and reduce tasks on the allocated containers.
+- The map tasks and reduce tasks communicate with the Node Managers (NMs) to manage resources and report progress.
+- The MapReduce job's map tasks process input data in parallel, generating intermediate key-value pairs.
+- The intermediate key-value pairs are shuffled, sorted, and passed to the reduce tasks.
+- The reduce tasks process the shuffled data, aggregating it and producing the final output.
+- Throughout the process, YARN's Resource Manager monitors the overall progress, manages resource allocation, handles failures, and ensures efficient utilization of cluster resources.
+
+In summary, YARN provides the resource management and scheduling capabilities necessary for running MapReduce jobs efficiently in a Hadoop cluster, while MapReduce provides the programming model and framework for processing data in parallel using the map and reduce phases.
+
+## 9. Classic MapReduce
+
+Classic MapReduce refers to the original implementation of the MapReduce programming model and framework, initially introduced by Google. It provided a scalable and efficient approach to process and analyze large-scale data sets in a distributed computing environment.
+
+The key characteristics of classic MapReduce include:
+
+1. Map and Reduce Phases: The MapReduce model divides the data processing task into two primary phases: the map phase and the reduce phase. In the map phase, input data is divided into smaller chunks, and a map function is applied to each chunk independently, generating intermediate key-value pairs. In the reduce phase, the intermediate key-value pairs are grouped, sorted, and processed to produce the final output.
+
+2. Scalability and Fault Tolerance: Classic MapReduce is designed to handle large-scale data processing by leveraging the parallel processing capabilities of a cluster of machines. It provides scalability by distributing the data and computation across multiple nodes, allowing for efficient utilization of resources. It also offers fault tolerance by automatically handling failures and rerunning failed tasks on different nodes.
+
+3. Data Locality: Classic MapReduce optimizes data processing by prioritizing data locality. It tries to execute map tasks on the nodes where the input data resides. This minimizes network overhead by avoiding unnecessary data transfers between nodes.
+
+4. Shuffle and Sort: The intermediate key-value pairs generated by the map tasks are shuffled and sorted based on their keys before being passed to the reduce tasks. This ensures that all values associated with the same key are brought together, facilitating the aggregation and processing in the reduce phase.
+
+5. Task Granularity: Classic MapReduce operates on a task-level granularity. Each map task processes a subset of the input data independently, and each reduce task handles a subset of the intermediate data associated with specific keys. This allows for efficient parallelism and load balancing.
+
+Classic MapReduce served as the foundation for various implementations and frameworks, most notably Apache Hadoop MapReduce. While classic MapReduce has its advantages, newer frameworks like Apache Spark have introduced enhancements and optimizations to address certain limitations and provide more advanced features for big data processing.
+
+## 10. job sheduler
+
+Job scheduling plays a crucial role in managing the execution of tasks and resources in a distributed computing environment. In the context of Hadoop and YARN, job scheduling refers to the process of allocating resources and determining the execution order of jobs and tasks within a cluster. Here are some key aspects of job scheduling in Hadoop:
+
+1. Scheduling Policies: Hadoop provides pluggable scheduling policies that determine how resources are allocated among different jobs or applications. Two commonly used scheduling policies in Hadoop are:
+
+..- Capacity Scheduler: The Capacity Scheduler allows the cluster resources to be divided into multiple queues, with each queue having a defined capacity. The resources are allocated to the queues based on their configured capacities, and each queue can have its scheduling policy, such as fair sharing or FIFO.
+
+..- Fair Scheduler: The Fair Scheduler aims to provide fair sharing of resources among different applications. It allocates resources based on the demands and needs of each application, ensuring that no application is starved of resources for an extended period.
+
+2. Resource Allocation: The scheduler determines how cluster resources, such as CPU, memory, and disk, are allocated to different tasks and applications. It takes into account factors like the resource requirements of tasks, the priority of jobs, and the availability of resources in the cluster. The scheduler aims to maximize resource utilization and minimize job completion times.
+
+3. Task Scheduling: Within a job, the scheduler determines the order and allocation of tasks, such as map tasks and reduce tasks. It considers factors like data locality (running tasks on nodes where data resides), load balancing, and task dependencies. The scheduler strives to optimize the execution of tasks and minimize the time taken to complete a job.
+
+4. Task Preemption: In resource-constrained scenarios, where there is competition for resources, the scheduler may employ task preemption. Preemption involves reclaiming resources from running tasks and allocating them to higher-priority tasks or jobs. This ensures that critical jobs or tasks get the necessary resources to complete in a timely manner.
+
+5. Monitoring and Adjustment: The scheduler continuously monitors the cluster's resource usage and job progress. It adjusts resource allocations based on real-time information and workload changes to adapt to dynamic resource availability and job requirements. This helps optimize resource utilization and job performance.
+
+Efficient job scheduling is crucial for achieving high throughput, minimizing job latencies, and ensuring fair resource sharing in a Hadoop cluster. It plays a vital role in achieving optimal performance and resource utilization across multiple concurrent jobs and tasks.
