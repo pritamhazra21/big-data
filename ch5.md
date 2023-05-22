@@ -390,8 +390,9 @@ By integrating Cassandra with Hadoop ecosystem components, you can take advantag
 
 
 
-S.No. |	CASSANDRA	| RDBMS
-1.	Cassandra is a high performance and highly scalable distributed NoSQL database management system.	RDBMS is a Database management system or software which is designed for relational databases.
+|S.No. |	CASSANDRA	| RDBMS|
+|--|--|--|
+|1.|	Cassandra is a high performance and highly scalable distributed NoSQL database management system.	|RDBMS is a Database management system or software which is designed for relational databases.|
 2.	Cassandra is a NoSQL database.	RDBMS uses SQL for querying and maintaining the database.
 3.	It deals with unstructured data.	It deals with structured data.
 4.	It has a flexible schema.	It has fixed schema.
