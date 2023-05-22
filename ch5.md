@@ -388,7 +388,7 @@ Cassandra can be integrated with Apache Hadoop to enable seamless data processin
 By integrating Cassandra with Hadoop ecosystem components, you can take advantage of the scalability, fault tolerance, and parallel processing capabilities of Hadoop while leveraging Cassandra's distributed storage, high availability, and low-latency data access. The specific integration approach depends on the use case, requirements, and the technologies used in your data processing and analytics workflows.
 
 
-
+## Diference between Cassendra and RDBMS
 
 |S.No. |	CASSANDRA	| RDBMS|
 |--|--|--|
