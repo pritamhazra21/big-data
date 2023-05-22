@@ -211,6 +211,17 @@ Multi-tenancy: It allows multiple engine access thus giving organizations a bene
 - Application Master: An application is a single job submitted to a framework. The application master is responsible for negotiating resources with the resource manager, tracking the status and monitoring progress of a single application. The application master requests the container from the node manager by sending a Container Launch Context(CLC) which includes everything an application needs to run. Once the application is started, it sends the health report to the resource manager from time-to-time.
 - Container: It is a collection of physical resources such as RAM, CPU cores and disk on a single node. The containers are invoked by Container Launch Context(CLC) which is a record that contains information such as environment variables, security tokens, dependencies etc.
 
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/c4796df4-b450-4143-9529-2b88171615da)
+
+1. Client submits an application
+2. The Resource Manager allocates a container to start the Application Manager
+3. The Application Manager registers itself with the Resource Manager
+4. The Application Manager negotiates containers from the Resource Manager
+5. The Application Manager notifies the Node Manager to launch containers
+6. Application code is executed in the container
+7. Client contacts Resource Manager/Application Manager to monitor application’s status
+7. Once the processing is complete, the Application Manager un-registers with the Resource Manager
+
 ## 8. MapReduce and YARN
 
 MapReduce and YARN are two closely related components in the Apache Hadoop ecosystem, but they serve distinct purposes and work together to enable distributed data processing in a Hadoop cluster.
