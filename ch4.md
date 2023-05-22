@@ -1,7 +1,4 @@
- 
-shuffle and sort, task execution,
-, input formats, output formats
-
+# Chapter 4
 ## 1. MapReduce workflow
 
 MapReduce is a programming model and software framework used for processing and analyzing large data sets in a distributed computing environment. It was popularized by Google and has become widely adopted in the field of big data analytics. The MapReduce framework breaks down a data processing task into two main phases: the map phase and the reduce phase.
