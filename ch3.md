@@ -82,6 +82,7 @@ Here's how Hadoop Streaming works:
 5. Output:
 - The final output of the streaming program or script is collected by the Hadoop framework.
 - It is written to the specified output location, such as HDFS or another destination, as defined in the Hadoop Streaming job configuration.
+
 Hadoop Streaming allows you to leverage the power of Hadoop's distributed processing framework while writing MapReduce programs in languages that are more comfortable for you. It provides flexibility and enables you to take advantage of the Hadoop ecosystem for data processing, even if you are not proficient in Java.
 
 
