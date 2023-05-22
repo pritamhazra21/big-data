@@ -135,3 +135,52 @@ This interface represents the status of a file or directory in HDFS, including i
 This interface provides statistics related to file system operations, such as the number of bytes read/written, number of files created/deleted, etc.
 These interfaces are part of the Hadoop Common library and can be used by developers to interact with HDFS programmatically in Java. By utilizing these interfaces, applications can perform various file operations, manipulate paths, and retrieve metadata from HDFS.
 
+## Describe AVRO
+
+Apache Avro is a data serialization system that provides a compact, fast, and efficient way to serialize and deserialize structured data. It is a language-agnostic data serialization framework that enables the exchange of data between different systems, programming languages, and platforms.
+
+Here are some key characteristics and features of Avro:
+
+1. Schema-Based: Avro uses a schema to define the structure of the data being serialized. The schema is typically defined in JSON format, which describes the fields, data types, and their hierarchical relationships. The schema acts as a contract that determines how the data is serialized and deserialized.
+
+2. Dynamic Typing: Avro supports dynamic typing, allowing for schema evolution and compatibility. This means that as long as the data adheres to the evolving schema, it can be successfully read and processed, even if the schema has changed between reading and writing.
+
+3. Compact Binary Format: Avro uses a compact binary format for data serialization, resulting in efficient storage and transmission of data. The binary format reduces the size of serialized data compared to other serialization formats, such as XML or JSON.
+
+4. Efficient Data Compression: Avro supports data compression techniques, allowing for further reduction in data size during serialization and storage. It supports multiple compression codecs like Snappy, Deflate, and Bzip2.
+
+5. Rich Data Types: Avro provides a wide range of built-in data types, including primitive types (integers, strings, booleans, etc.) and complex types (arrays, maps, records, enums, unions, etc.). Additionally, Avro allows for the definition of custom data types and supports nested and recursive structures.
+
+6. Language Interoperability: Avro supports multiple programming languages, including Java, Python, C++, Ruby, and more. Avro's schema definitions can be used to generate language-specific code for serialization and deserialization, enabling seamless integration with different systems.
+
+7. Schema Evolution and Backward Compatibility: Avro provides support for schema evolution, allowing for the addition, removal, or modification of fields in a schema without breaking compatibility. This ensures that data written with an older schema can still be read and processed with a newer schema.
+
+8. Integration with Hadoop Ecosystem: Avro is widely used in the Apache Hadoop ecosystem, with support for Avro-based file formats like Avro Data Files and Avro MapReduce. It integrates well with tools like Apache Spark, Apache Hive, and Apache Kafka, enabling efficient data processing and exchange in big data environments.
+
+Overall, Avro provides a flexible and efficient data serialization framework with schema-based data exchange. Its compact binary format, support for schema evolution, and language interoperability make it a popular choice for handling structured data in various data processing and storage scenarios.
+
+## Explain AVRO serialisation.
+
+Avro serialization refers to the process of converting data objects into a binary format based on an Avro schema. Avro provides a compact and efficient way to serialize data, making it suitable for storing, transmitting, and processing large volumes of structured data.
+
+The process of Avro serialization involves the following steps:
+
+1. Define an Avro Schema: A schema is required to describe the structure of the data being serialized. The schema is typically defined in JSON format and specifies the fields, data types, and hierarchical relationships of the data.
+
+2. Create a Data Object: Create an instance of the data object that conforms to the Avro schema. The data object can be a custom class or a generic representation like **GenericRecord** provided by Avro.
+
+3. Serialize the Data Object: Use an Avro encoder to convert the data object into a binary representation based on the Avro schema. The encoder reads the data object, matches it with the schema, and produces the serialized binary output.
+
+4. Store or Transmit the Serialized Data: The serialized data can be stored in files, databases, or transmitted over networks to be consumed by other systems or processes.
+
+During serialization, Avro performs several optimizations to minimize the size of the serialized data. It achieves this through various techniques:
+
+- Schema Compression: Avro optimizes the storage of schema information by using a schema registry or by encoding the schema once and referring to it by an identifier in subsequent serialized data.
+
+- Binary Encoding: Avro uses a compact binary encoding for serialized data. It represents data types efficiently, reducing the size compared to other text-based serialization formats like XML or JSON.
+
+- Block Compression: Avro supports different compression codecs, such as Snappy, Deflate, or Bzip2, to further reduce the size of serialized data during storage or transmission.
+
+The serialized Avro data can be deserialized by following the reverse process, where the binary data is decoded using an Avro decoder, matched against the Avro schema, and reconstructed into the original data object.
+
+Avro serialization is widely used in big data processing frameworks like Apache Hadoop and Apache Kafka. It enables efficient storage, processing, and exchange of structured data across different systems, programming languages, and platforms. The use of schemas allows for schema evolution and backward compatibility, making Avro a flexible and scalable choice for handling diverse data sources in a distributed environment.
