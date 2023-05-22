@@ -159,7 +159,7 @@ Here are some key characteristics and features of Avro:
 
 Overall, Avro provides a flexible and efficient data serialization framework with schema-based data exchange. Its compact binary format, support for schema evolution, and language interoperability make it a popular choice for handling structured data in various data processing and storage scenarios.
 
-## 8. Explain AVRO serialisation.
+## 8. Explain AVRO serialization.
 
 Avro serialization refers to the process of converting data objects into a binary format based on an Avro schema. Avro provides a compact and efficient way to serialize data, making it suitable for storing, transmitting, and processing large volumes of structured data.
 
@@ -185,7 +185,7 @@ The serialized Avro data can be deserialized by following the reverse process, w
 
 Avro serialization is widely used in big data processing frameworks like Apache Hadoop and Apache Kafka. It enables efficient storage, processing, and exchange of structured data across different systems, programming languages, and platforms. The use of schemas allows for schema evolution and backward compatibility, making Avro a flexible and scalable choice for handling diverse data sources in a distributed environment.
 
-## 9. what are the advantage and disadvantage of hadoop over java serilization
+## 9. what are the advantage and disadvantage of hadoop over java serialization
 
 Hadoop serialization and Java serialization serve different purposes and have distinct advantages and disadvantages. Let's compare them:
 
