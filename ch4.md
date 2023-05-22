@@ -224,7 +224,7 @@ Job scheduling plays a crucial role in managing the execution of tasks and resou
 
 1. Scheduling Policies: Hadoop provides pluggable scheduling policies that determine how resources are allocated among different jobs or applications. Two commonly used scheduling policies in Hadoop are:
 
-..- Capacity Scheduler: The Capacity Scheduler allows the cluster resources to be divided into multiple queues, with each queue having a defined capacity. The resources are allocated to the queues based on their configured capacities, and each queue can have its scheduling policy, such as fair sharing or FIFO.
+** - Capacity Scheduler: The Capacity Scheduler allows the cluster resources to be divided into multiple queues, with each queue having a defined capacity. The resources are allocated to the queues based on their configured capacities, and each queue can have its scheduling policy, such as fair sharing or FIFO.
 
 ..- Fair Scheduler: The Fair Scheduler aims to provide fair sharing of resources among different applications. It allocates resources based on the demands and needs of each application, ensuring that no application is starved of resources for an extended period.
 
