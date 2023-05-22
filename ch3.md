@@ -40,3 +40,19 @@ Here are the key concepts of HDFS:
 - Command-line interface and APIs: HDFS provides a command-line interface (CLI) for interacting with the file system, allowing users to perform various operations such as creating directories, copying files, or listing file details. Additionally, HDFS provides APIs in various programming languages (Java, Python, etc.) to programmatically access and manipulate the file system.
 
 Overall, HDFS provides a distributed and fault-tolerant storage solution for big data processing. Its design principles prioritize data reliability, scalability, and performance, making it a fundamental component of the Hadoop ecosystem.
+
+
+##How HDFS works?
+
+Here's a summary of how HDFS works in terms of the NameNode and DataNodes:
+
+HDFS follows a master-slave architecture with a NameNode as the master and DataNodes as the slaves.
+The NameNode manages the filesystem namespace, maintaining metadata about files and directories.
+It coordinates client requests, validates operations, and enforces access control policies.
+The NameNode keeps track of block-to-DataNode mappings and monitors the health of DataNodes through heartbeat signals.
+DataNodes store data blocks and periodically report their status to the NameNode.
+DataNodes replicate blocks, transfer blocks as instructed by the NameNode, and ensure block integrity through checksum verification.
+The NameNode persists metadata to memory and periodically writes it to disk for recovery.
+DataNodes store blocks as separate files on their local storage.
+The coordination between the NameNode and DataNodes enables fault tolerance, efficient data storage, replication, and retrieval in HDFS.
+In summary, the NameNode manages the metadata and coordination, while DataNodes handle block storage and replication, forming a distributed and fault-tolerant storage system in HDFS
