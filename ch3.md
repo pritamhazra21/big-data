@@ -42,7 +42,7 @@ Here are the key concepts of HDFS:
 Overall, HDFS provides a distributed and fault-tolerant storage solution for big data processing. Its design principles prioritize data reliability, scalability, and performance, making it a fundamental component of the Hadoop ecosystem.
 
 
-##How HDFS works?
+## How HDFS works?
 
 Here's a summary of how HDFS works in terms of the NameNode and DataNodes:
 
