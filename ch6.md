@@ -301,5 +301,86 @@ Hive supports additional file formats and can also work with custom file formats
 
 The choice of data types and file formats in Hive depends on factors such as the nature of the data, query patterns, performance requirements, and integration with other tools and systems in the Hadoop ecosystem.
 
+## Hive data defination
 
+In HiveQL (Hive Query Language), you can define and manipulate data structures using Data Definition Language (DDL) statements. HiveQL provides several DDL statements to create, alter, and drop tables, databases, and partitions. Here are the commonly used DDL statements in HiveQL for data definition:
 
+1. Create Database:
+
+The CREATE DATABASE statement is used to create a new database in Hive.
+Syntax:
+```
+CREATE DATABASE [IF NOT EXISTS] database_name
+[COMMENT 'database_comment']
+[LOCATION 'hdfs_directory']
+[WITH DBPROPERTIES (property_name=property_value, ...)];
+
+```
+2. Create Table:
+
+The CREATE TABLE statement is used to create a new table in Hive.
+Syntax:
+```
+CREATE [EXTERNAL] TABLE [IF NOT EXISTS] [database_name.]table_name
+[(col_name data_type [COMMENT col_comment], ...)]
+[COMMENT 'table_comment']
+[PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)]
+[CLUSTERED BY (col_name, col_name, ...) [SORTED BY (col_name [ASC|DESC], ...)] INTO num_buckets BUCKETS]
+[ROW FORMAT row_format]
+[STORED AS file_format]
+[LOCATION 'hdfs_directory']
+[TBLPROPERTIES (property_name=property_value, ...)];
+
+```
+3. Alter Table:
+
+The ALTER TABLE statement is used to modify the structure or properties of an existing table.
+Syntax:
+```
+ALTER TABLE [database_name.]table_name
+ADD COLUMNS (col_name data_type [COMMENT col_comment], ...);
+ALTER TABLE [database_name.]table_name
+RENAME TO new_table_name;
+ALTER TABLE [database_name.]table_name
+SET TBLPROPERTIES (property_name=property_value, ...);
+
+```
+
+4. Drop Table:
+
+The DROP TABLE statement is used to remove an existing table from Hive.
+Syntax:
+```
+DROP TABLE [IF EXISTS] [database_name.]table_name;
+
+```
+
+5. Create Partition:
+
+The ALTER TABLE ... ADD PARTITION statement is used to add a new partition to a partitioned table.
+Syntax:
+```
+ALTER TABLE [database_name.]table_name
+ADD PARTITION (partition_spec)
+[LOCATION 'hdfs_directory'];
+
+```
+6. Drop Partition:
+
+The ALTER TABLE ... DROP PARTITION statement is used to remove a partition from a partitioned table.
+Syntax:
+```
+ALTER TABLE [database_name.]table_name
+DROP PARTITION (partition_spec);
+
+```
+7. Truncate Table:
+
+The TRUNCATE TABLE statement is used to remove all data from an existing table, while keeping the table structure intact.
+Syntax:
+```
+TRUNCATE TABLE [database_name.]table_name;
+
+```
+
+These DDL statements provide the necessary tools to define and manipulate tables, databases, partitions, and their properties in Hive. They allow you to create and manage the data structures needed for data storage and querying in Hive.
