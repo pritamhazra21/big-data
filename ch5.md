@@ -386,3 +386,22 @@ Cassandra can be integrated with Apache Hadoop to enable seamless data processin
 5. Apache Kafka: Kafka is a distributed streaming platform that enables high-throughput, fault-tolerant, and real-time data streaming. Cassandra can be used as a sink for Kafka, allowing you to store and process real-time streaming data in Cassandra. This integration enables building real-time data pipelines and streaming analytics applications.
 
 By integrating Cassandra with Hadoop ecosystem components, you can take advantage of the scalability, fault tolerance, and parallel processing capabilities of Hadoop while leveraging Cassandra's distributed storage, high availability, and low-latency data access. The specific integration approach depends on the use case, requirements, and the technologies used in your data processing and analytics workflows.
+
+
+
+
+S.No. |	CASSANDRA	| RDBMS
+1.	Cassandra is a high performance and highly scalable distributed NoSQL database management system.	RDBMS is a Database management system or software which is designed for relational databases.
+2.	Cassandra is a NoSQL database.	RDBMS uses SQL for querying and maintaining the database.
+3.	It deals with unstructured data.	It deals with structured data.
+4.	It has a flexible schema.	It has fixed schema.
+5.	Cassandra has peer-to-peer architecture with no single point of failure.	RDBMS has master-slave core architecture means a single point of failure.
+6.	Cassandra handles high volume incoming data velocity.	RDBMS handles moderate incoming data velocity.
+7.	In RDBMS there is limited data source means data come from many locations.	In Cassandra there are various data source means data come from one/few location.
+8.	It supports simple transactions.	It supports complex and nested transactions.
+9.	In Cassandra the outermost container is Keyspace.	In RDBMS the outermost container is database.
+10.	Cassandra follows decentralized deployments.	RDBMS follows centralized deployments.
+11.	In Cassandra data written in many locations.	In RDBMS mainly data are written in one location.
+12.	In Cassandra row represents a unit of replication.	In RDBMS row represents a single record.
+13.	In Cassandra column represents a unit of storage.	In RDBMS column represents an attribute.
+14.	In Cassandra, relationships are represented using collections.	In RDBMS relationships are represented using keys and join etc.
