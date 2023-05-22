@@ -1,4 +1,4 @@
-Pig, Grunt, pig data model, Pig Latin, developing and testing Pig Latin scripts.
+
 Hive, data types and file formats, HiveQL data definition, HiveQL data
 manipulation, HiveQL queries.
 
@@ -137,6 +137,83 @@ result = ITERATE input_data
 ```
 Pig Latin provides a concise and declarative syntax for expressing complex data transformations and analyses. It abstracts the complexities of distributed processing and allows users to focus on the data transformations rather than the underlying execution framework.
 
+## Devoloping and testing
 
+When developing and testing Pig Latin scripts, you can follow these steps to ensure smooth execution and accurate results:
 
+1. Set up the Environment:
+
+- Install Apache Pig on your system and set up the necessary configurations.
+- Ensure that you have a compatible version of Apache Hadoop installed if you plan to run Pig in distributed mode.
+2. Write Pig Latin Scripts:
+
+- Create a new file with a ".pig" extension, e.g., "script.pig".
+- Open the file in a text editor or an integrated development environment (IDE) with Pig Latin syntax highlighting support.
+- Start writing your Pig Latin statements in the file, following the syntax and structure of Pig Latin.
+3. Load Data:
+
+- Use the LOAD statement to load your data into Pig from various sources such as HDFS, local file systems, or databases.
+- Specify the data format, location, and any required schema or field mappings.
+4. Perform Data Transformations:
+
+- Use Pig Latin operators and functions to perform the desired data transformations, such as filtering, grouping, joining, and aggregating.
+- Chain multiple operators together to create complex data pipelines.
+5. Store or Display Results:
+
+- Use the STORE statement to write the transformed data to an output location or storage system.
+- Alternatively, use the DUMP statement to display the results on the console for testing and debugging purposes.
+6. Debugging and Iterative Development:
+
+- Use the DESCRIBE statement to check the schema of relations at different stages in your script.
+- Use the EXPLAIN statement to understand the execution plan of your Pig Latin script.
+- Leverage the ILLUSTRATE statement to visualize the data flow and intermediate results.
+7. Test and Validate:
+
+- Run your Pig Latin script using the Pig command-line interface or by submitting it to a Pig cluster.
+- Monitor the execution progress and check for any error messages or warnings.
+- Inspect the output data or results to ensure they match your expectations.
+- Iterate and modify your script as needed based on the results and feedback.
+8. Use Parameterization:
+
+- Parameterize your Pig Latin script to make it more flexible and reusable.
+- Define parameters at the beginning of your script and refer to them throughout the script.
+- This allows you to easily change input sources, output locations, or other settings without modifying the script itself.
+9. Use Sample or Subset Data:
+
+- During development and testing, it can be beneficial to work with a smaller sample or subset of your data to speed up execution and quickly validate results.
+- Use the LIMIT or SAMPLE operators to limit the number of records or randomly sample a subset of your data.
+10. Handle Errors and Exceptions:
+
+- Ensure that your script includes error handling mechanisms for scenarios like missing data, incorrect data types, or unexpected conditions.
+- Use the FILTER operator to remove invalid or erroneous data from your dataset.
+- Leverage the power of Pig's error handling and exception mechanisms to gracefully handle issues and failures.
+
+By following these steps, you can develop and test your Pig Latin scripts effectively, iterate on your data transformations, and ensure the accuracy and efficiency of your data processing pipelines.
+
+## Pig architecture
+
+The language used to analyze data in Hadoop using Pig is known as Pig Latin. It is a highlevel data processing language which provides a rich set of data types and operators to perform various operations on the data.
+
+To perform a particular task Programmers using Pig, programmers need to write a Pig script using the Pig Latin language, and execute them using any of the execution mechanisms (Grunt Shell, UDFs, Embedded). After execution, these scripts will go through a series of transformations applied by the Pig Framework, to produce the desired output.
+
+Internally, Apache Pig converts these scripts into a series of MapReduce jobs, and thus, it makes the programmer’s job easy. The architecture of Apache Pig is shown below.
+
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/efa03f14-6ad4-47ad-a6ce-668b4b7c2555)
+
+Apache Pig Components
+As shown in the figure, there are various components in the Apache Pig framework. Let us take a look at the major components.
+
+**Parser**
+Initially the Pig Scripts are handled by the Parser. It checks the syntax of the script, does type checking, and other miscellaneous checks. The output of the parser will be a DAG (directed acyclic graph), which represents the Pig Latin statements and logical operators.
+
+In the DAG, the logical operators of the script are represented as the nodes and the data flows are represented as edges.
+
+**Optimizer**
+The logical plan (DAG) is passed to the logical optimizer, which carries out the logical optimizations such as projection and pushdown.
+
+**Compiler**
+The compiler compiles the optimized logical plan into a series of MapReduce jobs.
+
+**Execution engine**
+Finally the MapReduce jobs are submitted to Hadoop in a sorted order. Finally, these MapReduce jobs are executed on Hadoop producing the desired results.
 
