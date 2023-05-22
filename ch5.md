@@ -23,7 +23,27 @@ Key features of HBase include:
 
 HBase is commonly used in applications that require random, real-time access to large datasets, such as social media analytics, fraud detection, time series data, sensor data, and log processing. Its ability to handle massive amounts of data with low-latency access makes it a powerful tool for big data processing and analytics.
 
-# Data model and Implementation of HBase.
+## what is hbase used for
+
+HBase is a distributed, scalable, and highly available NoSQL database that is built on top of the Hadoop Distributed File System (HDFS). It is designed to handle large volumes of structured and semi-structured data with high read and write throughput. Here are some common use cases where HBase is often used:
+
+1. Time-series Data: HBase is well-suited for storing and processing time-series data, such as sensor data, log files, event data, financial market data, or any data that has a timestamp associated with it. Its ability to handle high write throughput and provide fast random read access makes it a good choice for storing and analyzing time-series data.
+
+2. Real-time Analytics: HBase's low-latency random read capabilities make it suitable for real-time analytics use cases. It can serve as a storage layer for serving real-time queries and aggregations, allowing applications to make fast queries on large datasets and generate real-time insights.
+
+3. Internet of Things (IoT): With the rise of IoT devices and sensors, HBase is commonly used as a backend storage system for collecting, storing, and analyzing IoT data. It can handle high-speed data ingestion, accommodate varying data formats, and provide real-time analytics on the IoT data.
+
+4. Social Media Analytics: HBase can be used to store and analyze social media data, including user profiles, interactions, timelines, and social graphs. It enables efficient storage and retrieval of social media data, allowing for personalized recommendations, sentiment analysis, social network analysis, and other social media analytics tasks.
+
+5. Ad Tech and Recommendation Systems: HBase's ability to handle large datasets, fast data retrieval, and scalability make it suitable for ad tech platforms and recommendation systems. It can be used to store and serve user profiles, user behavior data, and recommendation models to power personalized recommendations and ad targeting.
+
+6. Metadata and Catalog Management: HBase is often used for managing metadata and catalogs in various domains, such as e-commerce, content management systems, and data catalogs. It can store and serve metadata about products, content, files, or any other structured information, providing efficient access and search capabilities.
+
+7. Data Archiving and Backup: HBase can be used as a distributed and reliable storage system for archiving and backing up large datasets. Its fault-tolerant design, data replication, and integration with Hadoop ecosystem tools allow for long-term data retention and disaster recovery.
+
+These are just a few examples of how HBase is used in different domains and applications. Its distributed nature, scalability, and ability to handle large amounts of data make it a popular choice for use cases that require high performance, high availability, and flexible data modeling.
+
+## Data model and Implementation of HBase.
 
 **Data Model:**
 In HBase, the data model is based on a sparse, distributed, and persistent multidimensional sorted map. The fundamental unit of data storage is a cell, which is identified by a combination of row key, column family, column qualifier (also called column name or column qualifier), and timestamp.
@@ -53,7 +73,51 @@ HBase is implemented as a distributed database management system that runs on to
 
 Overall, the data model and implementation of HBase enable it to handle massive amounts of data, provide high-performance random access, and support scalability and fault tolerance in distributed environments.
 
-# HBase clients
+## Architecture of HBase
+
+HBase architecture has 3 main components: HMaster, Region Server, Zookeeper. 
+
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/a80fa77b-384f-473d-8d73-db179c0a1e07)
+
+Figure – Architecture of HBase 
+
+All the 3 components are described below: 
+ 
+
+1. HMaster – 
+The implementation of Master Server in HBase is HMaster. It is a process in which regions are assigned to region server as well as DDL (create, delete table) operations. It monitor all Region Server instances present in the cluster. In a distributed environment, Master runs several background threads. HMaster has many features like controlling load balancing, failover etc. 
+ 
+2. Region Server – 
+HBase Tables are divided horizontally by row key range into Regions. Regions are the basic building elements of HBase cluster that consists of the distribution of tables and are comprised of Column families. Region Server runs on HDFS DataNode which is present in Hadoop cluster. Regions of Region Server are responsible for several things, like handling, managing, executing as well as reads and writes HBase operations on that set of regions. The default size of a region is 256 MB. 
+ 
+3. Zookeeper – 
+It is like a coordinator in HBase. It provides services like maintaining configuration information, naming, providing distributed synchronization, server failure notification etc. Clients communicate with region servers via zookeeper
+
+## Advantage Disadvantage of hbase
+
+**Advantages of HBase – **
+ 
+1. Can store large data sets 
+2. Database can be shared 
+3. Cost-effective from gigabytes to petabytes 
+4. High availability through failover and replication 
+ 
+**Disadvantages of HBase –** 
+ 
+1. No support SQL structure 
+2. No transaction support 
+3. Sorted only on key 
+4. Memory issues on the cluster 
+
+## difference from hdfs
+
+HBase provides low latency access while HDFS provides high latency operations. 
+ 
+HBase supports random read and writes while HDFS supports Write once Read Many times. 
+ 
+HBase is accessed through shell commands, Java API, REST, Avro or Thrift API while HDFS is accessed through MapReduce jobs. 
+
+## HBase clients
 
 In order to interact with HBase, you need to use an HBase client library or API. The HBase client allows you to connect to an HBase cluster, perform operations such as reading and writing data, and manage the HBase schema. There are several options available for HBase clients:
 
