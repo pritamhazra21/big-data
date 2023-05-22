@@ -310,11 +310,13 @@ Indexed Files:
 Indexed files provide an additional layer of organization by maintaining an index structure alongside the actual data.
 The index allows for faster search and retrieval of specific records based on key values.
 Examples of indexed file structures include B-trees, hash files, and ISAM (Indexed Sequential Access Method).
+
 Database Files:
 
 Database files store structured data in a format optimized for efficient querying and manipulation.
 They provide features such as data indexing, transactional support, concurrency control, and query optimization.
 Popular database file formats include SQLite, MySQL, PostgreSQL, and Oracle.
+
 Log Files:
 
 Log files are used for recording events, activities, or changes in a system or application.
