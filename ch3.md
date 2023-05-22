@@ -238,3 +238,22 @@ Here's how Hadoop Pipes works:
 - It handles the communication between the C++ program and the Hadoop framework, allowing the program to participate in the MapReduce workflow.
 
 Hadoop Pipes enables developers to write MapReduce applications in C++ while taking advantage of Hadoop's distributed processing capabilities, fault tolerance, and scalability. It provides flexibility for organizations with existing C++ codebases to leverage Hadoop for big data processing without the need for a complete rewrite in Java.
+
+
+## 11. Data integrity in Hadoop.
+
+Data integrity in Hadoop refers to the assurance that data stored and processed in a Hadoop cluster remains intact and unchanged throughout its lifecycle. Hadoop incorporates several mechanisms to ensure data integrity:
+
+1. Replication: Hadoop replicates data across multiple nodes in the cluster to provide fault tolerance and data redundancy. By default, it maintains three copies of each data block. If a replica becomes unavailable or corrupted, Hadoop can retrieve the data from one of the other replicas, ensuring data availability and integrity.
+
+2. Checksums: Hadoop uses checksums to verify the integrity of data during transmission and storage. Each data block in Hadoop's distributed file system (HDFS) is associated with a checksum, which is calculated and stored along with the data block. During data transfers or reads, Hadoop verifies the checksum to ensure that the data is not corrupted.
+
+3. Data Validation: Hadoop provides mechanisms to validate the correctness of data during processing. MapReduce, the processing framework in Hadoop, allows developers to implement custom data validation logic as part of the map and reduce tasks. This enables the identification and handling of invalid or malformed data records during data processing.
+
+4. Write-once, Read-many (WORM): Hadoop's file system, HDFS, follows a WORM model, where data is written once and then becomes immutable and read-only. This approach ensures that data is not modified after it is written, reducing the risk of accidental or unauthorized changes.
+
+5. Data Integrity Auditing: Hadoop provides tools and utilities to audit and monitor the integrity of data. These tools can track and log changes made to data, including modifications, deletions, or unauthorized access attempts. Auditing capabilities help identify and address any potential integrity issues.
+
+6. Backup and Disaster Recovery: Hadoop clusters typically implement backup and disaster recovery strategies to ensure data integrity in the event of system failures or disasters. Regular backups and replication to off-site locations help protect data and enable recovery in case of data loss or corruption.
+
+By employing these mechanisms, Hadoop aims to maintain the integrity of data throughout its lifecycle, from storage and processing to retrieval and analysis. These measures provide assurance that data remains reliable and consistent, enabling users to trust the results and insights derived from Hadoop-based data processing.
