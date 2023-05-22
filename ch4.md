@@ -91,6 +91,7 @@ When it comes to testing MapReduce jobs using MRUnit, you have a couple of optio
 
 Here's a simple example demonstrating how to use MRUnit for local testing:
 ,,,
+
 @RunWith(MockitoJUnitRunner.class)
 public class MyMapReduceTest {
 
@@ -129,4 +130,8 @@ public class MyMapReduceTest {
     }
 }
 
-,,,
+
+
+In the above example, MyMapReduceJob represents your actual MapReduce job class, MyMapper and MyReducer represent your mapper and reducer implementations, respectively. You can configure the job, set up the input data, and define the expected output. Then, you can run the test using MRUnit's MapReduceDriver and perform assertions on the output.
+
+By providing test data and running tests locally with MRUnit, you can effectively validate the correctness of your MapReduce code in a controlled and isolated environment.
