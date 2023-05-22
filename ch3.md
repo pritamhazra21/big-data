@@ -1,4 +1,4 @@
-## How dose hadoop analyse data ?
+## 1. How dose hadoop analyse data ?
 
 Hadoop is a powerful framework for processing and analyzing large-scale data sets. It provides a distributed computing environment that can handle massive amounts of data across a cluster of computers. Here's a general overview of how Hadoop analyzes data:
 
@@ -21,7 +21,7 @@ It's important to note that Hadoop is a complex ecosystem with several component
 
 
 
-## explain the concept of HDFS?
+## 2. explain the concept of HDFS?
 
 The Hadoop Distributed File System (HDFS) is a distributed file system that is part of the Apache Hadoop ecosystem. It is designed to store and manage large amounts of data across a cluster of computers. HDFS provides fault tolerance, high throughput, and scalability to support big data processing.
 
@@ -42,7 +42,7 @@ Here are the key concepts of HDFS:
 Overall, HDFS provides a distributed and fault-tolerant storage solution for big data processing. Its design principles prioritize data reliability, scalability, and performance, making it a fundamental component of the Hadoop ecosystem.
 
 
-## How HDFS works?
+## 3. How HDFS works?
 
 Here's a summary of how HDFS works in terms of the NameNode and DataNodes:
 
@@ -58,7 +58,7 @@ HDFS follows a master-slave architecture with a NameNode as the master and DataN
 In summary, the NameNode manages the metadata and coordination, while DataNodes handle block storage and replication, forming a distributed and fault-tolerant storage system in HDFS
 
 
-## Explain Hadoop streaming.
+## 4. Explain Hadoop streaming.
 
 Hadoop Streaming is a utility that allows you to write and run MapReduce programs in languages other than Java, such as Python, Perl, Ruby, or any executable program. It provides a bridge between Hadoop's Java framework and scripts or programs written in other languages.
 
@@ -85,7 +85,7 @@ Here's how Hadoop Streaming works:
 
 Hadoop Streaming allows you to leverage the power of Hadoop's distributed processing framework while writing MapReduce programs in languages that are more comfortable for you. It provides flexibility and enables you to take advantage of the Hadoop ecosystem for data processing, even if you are not proficient in Java.
 
-## Advantages of HDFS.
+## 5. Advantages of HDFS.
 
 
 HDFS (Hadoop Distributed File System) offers several advantages that make it a popular choice for big data storage and processing. Here are some key advantages of HDFS:
@@ -108,7 +108,7 @@ HDFS (Hadoop Distributed File System) offers several advantages that make it a p
 
 Overall, HDFS provides a scalable, fault-tolerant, and high-performance distributed file system for big data storage and processing. It offers the necessary features and capabilities to efficiently handle the volume, velocity, and variety of data in modern data-driven applications.
 
-## Java Interface in HDFS
+## 6. Java Interface in HDFS
 
 In HDFS (Hadoop Distributed File System), there are several Java interfaces that define the contracts and APIs for interacting with the HDFS filesystem. These interfaces provide methods for performing various operations such as reading, writing, and managing files in HDFS. Here are some important Java interfaces in HDFS:
 
@@ -135,7 +135,7 @@ This interface represents the status of a file or directory in HDFS, including i
 This interface provides statistics related to file system operations, such as the number of bytes read/written, number of files created/deleted, etc.
 These interfaces are part of the Hadoop Common library and can be used by developers to interact with HDFS programmatically in Java. By utilizing these interfaces, applications can perform various file operations, manipulate paths, and retrieve metadata from HDFS.
 
-## Describe AVRO
+## 7. Describe AVRO
 
 Apache Avro is a data serialization system that provides a compact, fast, and efficient way to serialize and deserialize structured data. It is a language-agnostic data serialization framework that enables the exchange of data between different systems, programming languages, and platforms.
 
@@ -159,7 +159,7 @@ Here are some key characteristics and features of Avro:
 
 Overall, Avro provides a flexible and efficient data serialization framework with schema-based data exchange. Its compact binary format, support for schema evolution, and language interoperability make it a popular choice for handling structured data in various data processing and storage scenarios.
 
-## Explain AVRO serialisation.
+## 8. Explain AVRO serialisation.
 
 Avro serialization refers to the process of converting data objects into a binary format based on an Avro schema. Avro provides a compact and efficient way to serialize data, making it suitable for storing, transmitting, and processing large volumes of structured data.
 
