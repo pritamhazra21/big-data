@@ -490,12 +490,12 @@ SELECT * FROM table_name;
 ```
 SELECT column1, column2, ... FROM table_name;
 ```
-1. Filter Rows with WHERE Clause:
+2. Filter Rows with WHERE Clause:
 
 ```
 SELECT * FROM table_name WHERE condition;
 ```
-1. Aggregation Queries:
+3. Aggregation Queries:
 
 - Sum of a Column:
 ```
@@ -509,37 +509,36 @@ SELECT AVG(column_name) FROM table_name;
 ```
 SELECT COUNT(*) FROM table_name;
 ```
-1. Grouping and Aggregation:
+4. Grouping and Aggregation:
 ```
 SELECT column1, COUNT(column2) FROM table_name GROUP BY column1;
 ```
-1. Sorting Rows:
+5. Sorting Rows:
 ```
 SELECT * FROM table_name ORDER BY column_name [ASC|DESC];
 ```
-1. Joining Tables:
+6. Joining Tables:
 ```
 SELECT * FROM table1 JOIN table2 ON table1.column_name = table2.column_name;
 ```
-1. Subqueries:
+7. Subqueries:
 ```
 SELECT * FROM table1 WHERE column_name IN (SELECT column_name FROM table2 WHERE condition);
 ```
-1. Using Built-in Functions:
+8. Using Built-in Functions:
 ```
 SELECT column1, FUNCTION(column2) FROM table_name;
 ```
-1. Conditional Statements with CASE:
+9. Conditional Statements with CASE:
 ```
 SELECT column1, CASE WHEN condition THEN value1 ELSE value2 END FROM table_name;
 ```
-1. Limiting Results:
+10. Limiting Results:
 ```
 SELECT * FROM table_name LIMIT n;
 ```
-1. Create a New Table from Query Results:
-
-sql
-Copy code
+11. Create a New Table from Query Results:
+```
 CREATE TABLE new_table_name AS SELECT * FROM table_name;
+```
 These are just a few examples of HiveQL queries. HiveQL provides a rich set of SQL-like operations and functions to manipulate and analyze data in Hive tables. The queries can be customized and combined to suit specific data analysis and reporting requirements.
