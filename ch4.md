@@ -1,3 +1,8 @@
+MapReduce workflows, unit tests with MRUnit, test data and local tests,
+anatomy of MapReduce job run, classic Map-reduce, YARN, failures in classic
+Map-reduce and YARN, job scheduling, shuffle and sort, task execution,
+MapReduce types, input formats, output formats
+
 ## 1. MapReduce workflow
 
 MapReduce is a programming model and software framework used for processing and analyzing large data sets in a distributed computing environment. It was popularized by Google and has become widely adopted in the field of big data analytics. The MapReduce framework breaks down a data processing task into two main phases: the map phase and the reduce phase.
