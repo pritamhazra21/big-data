@@ -1,5 +1,5 @@
  
- job scheduling, shuffle and sort, task execution,
+shuffle and sort, task execution,
 , input formats, output formats
 
 ## 1. MapReduce workflow
@@ -224,9 +224,9 @@ Job scheduling plays a crucial role in managing the execution of tasks and resou
 
 1. Scheduling Policies: Hadoop provides pluggable scheduling policies that determine how resources are allocated among different jobs or applications. Two commonly used scheduling policies in Hadoop are:
 
-** - Capacity Scheduler: The Capacity Scheduler allows the cluster resources to be divided into multiple queues, with each queue having a defined capacity. The resources are allocated to the queues based on their configured capacities, and each queue can have its scheduling policy, such as fair sharing or FIFO.
+- Capacity Scheduler: The Capacity Scheduler allows the cluster resources to be divided into multiple queues, with each queue having a defined capacity. The resources are allocated to the queues based on their configured capacities, and each queue can have its scheduling policy, such as fair sharing or FIFO.
 
-..- Fair Scheduler: The Fair Scheduler aims to provide fair sharing of resources among different applications. It allocates resources based on the demands and needs of each application, ensuring that no application is starved of resources for an extended period.
+- Fair Scheduler: The Fair Scheduler aims to provide fair sharing of resources among different applications. It allocates resources based on the demands and needs of each application, ensuring that no application is starved of resources for an extended period.
 
 2. Resource Allocation: The scheduler determines how cluster resources, such as CPU, memory, and disk, are allocated to different tasks and applications. It takes into account factors like the resource requirements of tasks, the priority of jobs, and the availability of resources in the cluster. The scheduler aims to maximize resource utilization and minimize job completion times.
 
@@ -237,3 +237,79 @@ Job scheduling plays a crucial role in managing the execution of tasks and resou
 5. Monitoring and Adjustment: The scheduler continuously monitors the cluster's resource usage and job progress. It adjusts resource allocations based on real-time information and workload changes to adapt to dynamic resource availability and job requirements. This helps optimize resource utilization and job performance.
 
 Efficient job scheduling is crucial for achieving high throughput, minimizing job latencies, and ensuring fair resource sharing in a Hadoop cluster. It plays a vital role in achieving optimal performance and resource utilization across multiple concurrent jobs and tasks.
+
+## 11. suffle and sort
+
+Shuffle and sort are crucial steps in the MapReduce framework that facilitate data aggregation and preparation for the reduce phase. These steps involve the reorganization and grouping of intermediate key-value pairs produced by the map tasks before they are processed by the reduce tasks. Here's an explanation of shuffle and sort in MapReduce:
+
+1. Intermediate Key-Value Pairs:
+During the map phase of a MapReduce job, each map task processes a portion of the input data and generates intermediate key-value pairs. The key represents a unique identifier or category, and the value contains the associated data or information.
+
+2. Partitioning:
+The intermediate key-value pairs are partitioned based on the keys. Each key-value pair is assigned to a specific reduce task based on a partitioning function. The partitioning function ensures that key-value pairs with the same key are sent to the same reduce task, enabling the grouping of related data.
+
+3. Shuffling:
+In the shuffling phase, the map outputs from all the map tasks are transferred to the appropriate reduce tasks. This involves the movement of data over the network, as the intermediate key-value pairs need to be sent from the map tasks' locations to the respective reduce tasks. This transfer of data is a critical part of the shuffle process.
+
+4. Sorting:
+Once the intermediate key-value pairs reach the reduce tasks, they undergo a sorting process based on the keys. Sorting ensures that the key-value pairs with the same key are arranged in a specific order, such as ascending or descending. Sorting facilitates efficient grouping and processing of related data in the reduce phase.
+
+5. Grouping:
+After sorting, the sorted intermediate key-value pairs are grouped together based on the keys. All key-value pairs with the same key are brought together, forming an iterable collection that serves as the input for the reduce function. Grouping allows the reduce tasks to process all the values associated with a particular key in a single iteration.
+
+The shuffle and sort steps are essential in the MapReduce framework as they enable the distribution, sorting, and grouping of intermediate data before it is processed by the reduce tasks. These steps optimize data aggregation and provide a consolidated view of the relevant data for each reduce task, allowing for efficient processing and aggregation of results.
+
+## 12. task execusion
+
+Task execution in the context of MapReduce refers to the process of executing individual tasks within a MapReduce job. MapReduce divides the processing of data into map tasks and reduce tasks, which are executed in parallel across a distributed computing environment. Here's an overview of the task execution process:
+
+1. Map Task Execution:
+
+- Input data splitting: The input data is divided into smaller splits, and each split is assigned to a map task. The number of map tasks is determined by the cluster configuration or user-defined settings.
+- Task assignment: The Resource Manager (YARN) assigns available containers to run the map tasks. Each container represents a node in the cluster with allocated resources (CPU, memory).
+- Task initialization: The assigned map tasks are launched in the allocated containers. Each map task initializes its execution environment, including loading necessary libraries and configurations.
+- Map function execution: The map task applies the user-defined map function to its assigned input split. The map function processes the input records and generates intermediate key-value pairs.
+- Intermediate data storage: The map task writes the generated intermediate key-value pairs to local disk or memory, usually in a sorted order based on the keys.
+
+2. Shuffle and Sort:
+
+- Shuffle and sort occur between the map and reduce phases and involve the movement and sorting of intermediate data across the cluster. The shuffled data is partitioned, transferred, and sorted based on the keys to ensure that all values with the same key are grouped together. This phase prepares the data for efficient processing by the reduce tasks.
+
+3. Reduce Task Execution:
+
+- Task assignment: After the shuffle and sort phase, reduce tasks are assigned to containers based on available resources.
+Task initialization: The assigned reduce tasks are launched, initializing their execution environment.
+- Reduce function execution: Each reduce task retrieves the shuffled and sorted intermediate data associated with its assigned keys. The reduce function processes the values associated with each key and produces the final output key-value pairs.
+- Output storage: The output key-value pairs generated by the reduce tasks are typically written to a distributed file system, such as HDFS, in the specified output directory.
+
+Throughout the task execution process, the cluster's resource manager (YARN) monitors task progress, manages task scheduling and resource allocation, and handles failures by rescheduling or restarting failed tasks.
+
+Task execution in MapReduce leverages the parallel processing capabilities of a distributed computing environment, allowing for efficient processing of large-scale data sets. The parallel execution of map and reduce tasks across multiple nodes in the cluster enables the scalability and performance benefits of MapReduce.
+
+## 13. input format output format
+
+In the context of MapReduce, input formats and output formats define the structure and organization of data during the input and output stages of a MapReduce job. They specify how the data is read from an input source (such as files or databases) and how the results are written to an output destination. Here's an explanation of input formats and output formats in MapReduce:
+
+Input Formats:
+
+An input format describes the way input data is read and presented to the map tasks in a MapReduce job. It defines how the input data is divided into input splits, which are processed by individual map tasks. Some commonly used input formats include:
+
+1. TextInputFormat: This is the default input format in MapReduce. It treats each line of input as a separate record and provides the key-value pairs where the key is the byte offset of the line and the value is the line itself.
+
+2. KeyValueInputFormat: This input format allows for custom key-value pairs to be read from the input data. It enables flexibility in the format of input data.
+
+3. SequenceFileInputFormat: This input format is used when the input data is in the form of a SequenceFile, which is a binary file format in Hadoop that stores key-value pairs.
+
+Output Formats:
+
+An output format specifies how the results of the MapReduce job are written or stored after the reduce tasks have processed the intermediate data. It defines the format in which the output data is presented or the destination to which it is written. Some commonly used output formats include:
+
+1. TextOutputFormat: This is the default output format in MapReduce. It writes the final output of the reduce tasks as plain text, where each line represents a key-value pair.
+
+2. KeyValueOutputFormat: This output format allows for custom key-value pairs to be written to the output data. It provides flexibility in formatting the output data.
+
+3. SequenceFileOutputFormat: This output format is used when the output data needs to be stored in a SequenceFile format.
+
+4. MultipleOutputs: This feature allows writing output to different files or directories based on specific criteria. It enables multiple output formats to be used within a single MapReduce job.
+
+By specifying appropriate input and output formats, MapReduce jobs can efficiently process data in various formats and interact with different storage systems. These formats provide flexibility and customization options for handling different types of input and output data in a MapReduce workflow.
