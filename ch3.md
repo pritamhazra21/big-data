@@ -112,24 +112,25 @@ Overall, HDFS provides a scalable, fault-tolerant, and high-performance distribu
 
 In HDFS (Hadoop Distributed File System), there are several Java interfaces that define the contracts and APIs for interacting with the HDFS filesystem. These interfaces provide methods for performing various operations such as reading, writing, and managing files in HDFS. Here are some important Java interfaces in HDFS:
 
-org.apache.hadoop.fs.FileSystem:
+**org.apache.hadoop.fs.FileSystem:**
 
 This interface represents the abstract view of the Hadoop filesystem. It provides methods for creating, deleting, and accessing files and directories in HDFS.
 Implementations of this interface include DistributedFileSystem, which is the default implementation for HDFS.
 
-org.apache.hadoop.fs.Path:
+**org.apache.hadoop.fs.Path:**
 
 This interface represents a path to a file or directory in HDFS. It encapsulates the URI and provides methods for manipulating paths, such as resolving, joining, and retrieving file/directory names.
 
-org.apache.hadoop.fs.FSDataInputStream and org.apache.hadoop.fs.FSDataOutputStream:
+**org.apache.hadoop.fs.FSDataInputStream** and **org.apache.hadoop.fs.FSDataOutputStream:**
 
 These interfaces represent the input and output streams for reading from and writing to files in HDFS.
 They provide methods for reading bytes, seeking within the file, and closing the streams.
-org.apache.hadoop.fs.FileStatus:
+
+**org.apache.hadoop.fs.FileStatus:**
 
 This interface represents the status of a file or directory in HDFS, including information like file size, permission, modification time, and ownership.
 
-*org.apache.hadoop.fs.FileSystem.Statistics:
+**org.apache.hadoop.fs.FileSystem.Statistics:**
 
 This interface provides statistics related to file system operations, such as the number of bytes read/written, number of files created/deleted, etc.
 These interfaces are part of the Hadoop Common library and can be used by developers to interact with HDFS programmatically in Java. By utilizing these interfaces, applications can perform various file operations, manipulate paths, and retrieve metadata from HDFS.
