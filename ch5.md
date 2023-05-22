@@ -131,7 +131,7 @@ In order to interact with HBase, you need to use an HBase client library or API.
 
 When choosing an HBase client, consider the programming language you prefer to use, the level of abstraction you require, and the specific features and functionalities you need for your application.
 
-# Hbase examples
+## Hbase examples
 
 Let's walk through a simple example of using the HBase Java API to create a table, insert data, and retrieve data from HBase.
 
@@ -262,7 +262,7 @@ Cassandra is commonly used in various applications, including real-time analytic
 
 It's important to note that while Cassandra and HBase are both distributed NoSQL databases, they have different design philosophies and trade-offs. HBase is column-oriented and tightly integrated with the Hadoop ecosystem, while Cassandra is a wide-column store with its own distributed architecture and features. The choice between Cassandra and HBase depends on specific use cases, requirements, and the desired consistency and availability guarantees.
 
-# Cassandra data model
+## Cassandra data model
 
 The data model in Cassandra is based on a wide-column store paradigm, also known as a column-family data model. It is designed to provide high scalability, flexibility, and performance for distributed data storage and retrieval. Here are the key components of the data model in Cassandra:
 
@@ -283,6 +283,31 @@ The data model in Cassandra is based on a wide-column store paradigm, also known
 8. Secondary Indexes: Cassandra supports secondary indexes on individual columns, allowing for efficient querying based on non-primary key attributes. However, the use of secondary indexes should be carefully considered, as they can impact performance and scalability.
 
 The data model in Cassandra is optimized for high write and read performance, distributed data storage, and horizontal scalability. It is designed to handle massive amounts of data and provide low-latency access. When designing the data model in Cassandra, it is important to carefully consider the access patterns, query requirements, and data distribution to optimize performance and ensure efficient data retrieval.
+
+## Cassendra architecture
+
+The architecture of Apache Cassandra is designed to provide a distributed, highly available, and scalable NoSQL database system. Here are the key components of the Cassandra architecture:
+
+1. Node: A node is an individual machine or server that participates in the Cassandra cluster. Each node can independently handle read and write requests, store data, and communicate with other nodes in the cluster. Nodes communicate with each other using the Gossip protocol to share cluster state and topology information.
+
+2. Data Distribution: Cassandra uses a decentralized architecture with a shared-nothing approach. Data is partitioned and distributed across multiple nodes in the cluster. Cassandra uses a consistent hashing algorithm to determine the placement of data across nodes based on the partition key. This approach allows data to be evenly distributed across the cluster, providing scalability and fault tolerance.
+
+3. Replication: Cassandra provides high availability and fault tolerance through data replication. Data is replicated across multiple nodes in the cluster, typically across multiple data centers, to ensure data durability and redundancy. Cassandra supports configurable replication strategies, such as SimpleStrategy and NetworkTopologyStrategy, allowing you to define how replicas are distributed across nodes and data centers.
+
+4. Ring Topology: Cassandra uses a ring-based topology, where each node in the cluster is assigned a position in a logical ring. Nodes are responsible for a range of data partitions, known as a token range. The ring topology allows for easy data distribution, load balancing, and decentralized management of the cluster.
+
+5. Commit Log: Cassandra uses a commit log to ensure durability and consistency of write operations. Before data is written to the actual data files, it is first written to the commit log. The commit log provides durability in case of node failures or crashes, allowing Cassandra to recover and replay the write operations.
+
+6. Memtable and SSTables: Cassandra stores data in memory-based data structures called memtables and on-disk data structures called SSTables (Sorted String Tables). Memtables serve as an in-memory write-back cache, where data is temporarily stored before being flushed to disk as SSTables. SSTables provide efficient read access and are periodically compacted to remove deleted or expired data and optimize storage.
+
+7. Read and Write Coordination: Cassandra employs a distributed, peer-to-peer architecture where each node can handle read and write operations. Cassandra uses a distributed consensus protocol based on timestamps called the "last write wins" principle to handle conflicting updates during concurrent writes. This approach allows for eventual consistency across replicas.
+
+8. CQL (Cassandra Query Language): CQL is the query language used to interact with Cassandra. It is similar to SQL and provides a familiar and expressive interface for querying and manipulating data stored in Cassandra. CQL supports a wide range of operations, including creating and modifying schemas, inserting and updating data, and executing complex queries.
+
+The architecture of Cassandra enables it to provide linear scalability, fault tolerance, and high availability. Its decentralized nature, data distribution model, and replication strategies allow it to handle large volumes of data, provide fast read and write access, and withstand node failures without sacrificing data durability and consistency.
+
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/ec800ac7-b6aa-4f6c-943b-8a13a4395e43)
+
 
 ## Cassandra examples
 
