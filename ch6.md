@@ -201,19 +201,105 @@ Internally, Apache Pig converts these scripts into a series of MapReduce jobs, a
 ![image](https://github.com/pritamhazra21/big-data/assets/75198912/efa03f14-6ad4-47ad-a6ce-668b4b7c2555)
 
 Apache Pig Components
+
 As shown in the figure, there are various components in the Apache Pig framework. Let us take a look at the major components.
 
 **Parser**
+
 Initially the Pig Scripts are handled by the Parser. It checks the syntax of the script, does type checking, and other miscellaneous checks. The output of the parser will be a DAG (directed acyclic graph), which represents the Pig Latin statements and logical operators.
 
 In the DAG, the logical operators of the script are represented as the nodes and the data flows are represented as edges.
 
 **Optimizer**
+
 The logical plan (DAG) is passed to the logical optimizer, which carries out the logical optimizations such as projection and pushdown.
 
 **Compiler**
+
 The compiler compiles the optimized logical plan into a series of MapReduce jobs.
 
 **Execution engine**
+
 Finally the MapReduce jobs are submitted to Hadoop in a sorted order. Finally, these MapReduce jobs are executed on Hadoop producing the desired results.
+
+## Hive
+
+Hive is an open-source data warehouse infrastructure built on top of Apache Hadoop. It provides a high-level SQL-like language called HiveQL (Hive Query Language) that allows users to query and analyze large datasets stored in Hadoop Distributed File System (HDFS) or other compatible storage systems.
+
+Here are some key features and concepts related to Hive:
+
+1. Schema-on-Read: Hive follows a schema-on-read approach, which means that the structure and schema of the data are determined at the time of reading the data rather than when it is stored. This flexibility allows Hive to work with diverse and evolving data sources.
+
+2. Metastore: Hive uses a metastore to store metadata about the tables, partitions, columns, and other information related to the data stored in Hive. The metastore can be backed by various databases like MySQL, PostgreSQL, or Derby.
+
+3. HiveQL: HiveQL is a SQL-like query language that provides a familiar syntax for data querying and analysis. It supports a wide range of SQL operations like SELECT, JOIN, GROUP BY, ORDER BY, and functions to perform aggregations, transformations, and filtering on the data.
+
+4. Tables and Partitions: Hive organizes data into tables, which are similar to database tables. Tables can be partitioned based on one or more columns, allowing for efficient querying and data organization. Partitioning enables faster data retrieval by pruning unnecessary partitions during query execution.
+
+5. Storage Formats: Hive supports various storage formats, including plain text, CSV, Avro, Parquet, ORC (Optimized Row Columnar), and more. Different storage formats offer different trade-offs between storage efficiency, query performance, and compatibility with other tools in the Hadoop ecosystem.
+
+6. User-Defined Functions (UDFs): Hive allows users to define and use custom User-Defined Functions (UDFs) in different programming languages like Java, Python, or Scala. UDFs extend the functionality of Hive by allowing users to perform custom computations or apply complex logic during data processing.
+
+7. Data Integration: Hive integrates well with other components in the Hadoop ecosystem. It can seamlessly interact with HDFS, Apache HBase, Apache Kafka, and other data sources. Hive also provides integration with Apache Spark, enabling the use of Spark as an execution engine for Hive queries.
+
+8. Hive Server: Hive provides a Hive Server that enables clients to submit Hive queries remotely. It supports various client interfaces like JDBC, ODBC, and a command-line interface (CLI) for interacting with Hive and executing queries.
+
+Hive provides a SQL-like interface and an SQL-like language to query and analyze large datasets stored in Hadoop. It abstracts the complexities of distributed computing and allows users to leverage their SQL skills to perform data analysis on big data platforms.
+
+## Hive data type and file formats
+
+Hive supports a variety of data types and file formats for storing and processing data. Here are the commonly used data types and file formats in Hive:
+
+**Data Types:**
+
+1. Primitive Data Types:
+
+- BOOLEAN: Represents a boolean value (true or false).
+- TINYINT: 1-byte signed integer.
+- SMALLINT: 2-byte signed integer.
+- INT: 4-byte signed integer.
+- BIGINT: 8-byte signed integer.
+- FLOAT: Single-precision floating-point number.
+- DOUBLE: Double-precision floating-point number.
+- STRING: Variable-length character string.
+- CHAR: Fixed-length character string.
+- VARCHAR: Variable-length character string with a maximum length.
+- TIMESTAMP: Represents a particular point in time.
+- DATE: Represents a date (year, month, day).
+- BINARY: Arbitrary-length binary data.
+- DECIMAL: Fixed-point decimal number.
+2. Complex Data Types:
+
+- ARRAY: Ordered collection of elements of the same type.
+- MAP: Collection of key-value pairs, where keys and values can have different data types.
+- STRUCT: Collection of named fields, each with its own data type.
+- UNION: A special type that can hold values of different data types.
+
+**File Formats:**
+
+1. Text File Format:
+
+- Delimited Text: Plain text files with fields separated by a specified delimiter, such as commas (CSV), tabs (TSV), or custom delimiters.
+- Regex Text: Text files with fields parsed using regular expressions to extract structured data.
+2. SequenceFile: A binary file format that allows efficient serialization and storage of key-value pairs. It is a common format for intermediate data in Hadoop.
+
+3. Avro: A row-based data serialization system that provides rich data structures, dynamic typing, and schema evolution. Avro files are self-describing and support efficient data compression.
+
+4. Parquet: A columnar storage file format optimized for query performance and compression. It provides efficient columnar encoding, predicate pushdown, and support for nested data structures.
+
+5. ORC (Optimized Row Columnar): A columnar file format designed for high-performance analytics workloads. It offers advanced compression techniques, predicate pushdown, and support for ACID transactions.
+
+6. RCFile (Record Columnar File): A columnar storage format that combines the benefits of both row-based and columnar storage. It provides efficient compression and supports predicate pushdown.
+
+7. JSON: A lightweight data interchange format that represents data in a human-readable text format.
+
+8. XML: XML files that store data in a hierarchical structure using tags and elements.
+
+9. Apache HBase: Hive can also interact with Apache HBase, a NoSQL database built on top of Hadoop, using HBase storage handlers.
+
+Hive supports additional file formats and can also work with custom file formats by defining custom input/output formats and SerDe (Serializer/Deserializer) libraries.
+
+The choice of data types and file formats in Hive depends on factors such as the nature of the data, query patterns, performance requirements, and integration with other tools and systems in the Hadoop ecosystem.
+
+
 
