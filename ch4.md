@@ -259,7 +259,7 @@ The key characteristics of classic MapReduce include:
 
 Classic MapReduce served as the foundation for various implementations and frameworks, most notably Apache Hadoop MapReduce. While classic MapReduce has its advantages, newer frameworks like Apache Spark have introduced enhancements and optimizations to address certain limitations and provide more advanced features for big data processing.
 
-## 10. job sheduler
+## 10. Job scheduler
 
 Job scheduling plays a crucial role in managing the execution of tasks and resources in a distributed computing environment. In the context of Hadoop and YARN, job scheduling refers to the process of allocating resources and determining the execution order of jobs and tasks within a cluster. Here are some key aspects of job scheduling in Hadoop:
 
