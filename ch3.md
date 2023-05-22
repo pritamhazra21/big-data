@@ -257,3 +257,92 @@ Data integrity in Hadoop refers to the assurance that data stored and processed 
 6. Backup and Disaster Recovery: Hadoop clusters typically implement backup and disaster recovery strategies to ensure data integrity in the event of system failures or disasters. Regular backups and replication to off-site locations help protect data and enable recovery in case of data loss or corruption.
 
 By employing these mechanisms, Hadoop aims to maintain the integrity of data throughout its lifecycle, from storage and processing to retrieval and analysis. These measures provide assurance that data remains reliable and consistent, enabling users to trust the results and insights derived from Hadoop-based data processing.
+
+## 12. Compression in Hadoop.
+
+Compression in Hadoop refers to the process of reducing the size of data to save storage space, minimize disk I/O, and improve overall performance. Hadoop provides built-in support for data compression, offering several compression codecs that can be applied to data during various stages of the data processing pipeline. Here's an overview of compression in Hadoop:
+
+1. Compression Codecs: Hadoop supports various compression codecs that determine the algorithm used to compress and decompress data. Some commonly used codecs in Hadoop include:
+
+  - Snappy: Snappy is a fast, compression/decompression codec that provides a good balance between compression ratio and speed. It is optimized for performance and is well-suited for use cases that require low-latency data processing.
+
+  - Gzip: Gzip is a widely-used compression codec that provides higher compression ratios at the cost of slower compression and decompression speeds. It is suitable for use cases where storage efficiency is a priority over processing speed.
+
+  - LZO: LZO is a compression codec known for its fast compression and decompression speeds. It provides moderate compression ratios and is commonly used in scenarios that require real-time or near-real-time data processing.
+
+  - Bzip2: Bzip2 is a compression codec that provides higher compression ratios but at the expense of slower compression and decompression speeds. It is often used when maximizing compression efficiency is crucial.
+
+2. Configurable Compression: Hadoop allows users to configure compression settings at different levels, such as for the entire cluster, individual files, or specific data types. This flexibility enables users to apply compression selectively based on their specific requirements and trade-offs between storage space and processing speed.
+
+3. Input Compression: Hadoop can read input data in compressed formats, reducing the disk I/O required for reading data. Input compression can be enabled by specifying the appropriate codec when defining the input format for a job. Hadoop automatically decompresses the input data during processing, transparent to the MapReduce job.
+
+4. Output Compression: Hadoop can compress the output data produced by the Reduce function before storing it, reducing the disk space required to store the data. Output compression can be enabled by specifying the compression codec when defining the output format for a job. Hadoop compresses the output data before writing it to the output destination.
+
+5. Transparent Compression: Hadoop's compression is transparent to MapReduce jobs and other Hadoop components. Input data is automatically decompressed during processing, and output data is compressed before storage. This transparency simplifies the development and deployment of applications on compressed data without requiring changes to the application code.
+
+By leveraging compression in Hadoop, users can optimize storage space, reduce disk I/O, and improve overall performance. The choice of compression codec depends on the specific requirements of the data, such as the desired compression ratio, processing speed, and storage constraints.
+
+
+## 13. File based structure.
+
+File-based data structures refer to data structures that are designed and optimized for storage and retrieval of data from files. These data structures are typically used when the data size exceeds the available memory capacity or when persistent storage is required for long-term data storage. Here are some commonly used file-based data structures:
+
+
+Flat Files:
+
+Flat files store data in a simple, sequential format, with each record or entry occupying a fixed number of bytes.
+They are easy to implement and understand but lack efficient searching or indexing capabilities.
+
+Delimited Files:
+
+Delimited files store data as records or entries, with fields separated by a delimiter character (e.g., comma-separated values, tab-separated values).
+They are commonly used for storing structured data and are easily readable by both humans and computer programs.
+Searching or querying data in delimited files typically requires sequential scanning.
+
+Binary Files:
+
+Binary files store data in binary format, using a specific file structure defined by the application or data format.
+They offer efficient storage and faster read/write operations compared to text-based formats.
+Binary files often require specific parsers or custom code to handle data extraction and manipulation.
+
+Indexed Files:
+
+Indexed files provide an additional layer of organization by maintaining an index structure alongside the actual data.
+The index allows for faster search and retrieval of specific records based on key values.
+Examples of indexed file structures include B-trees, hash files, and ISAM (Indexed Sequential Access Method).
+Database Files:
+
+Database files store structured data in a format optimized for efficient querying and manipulation.
+They provide features such as data indexing, transactional support, concurrency control, and query optimization.
+Popular database file formats include SQLite, MySQL, PostgreSQL, and Oracle.
+Log Files:
+
+Log files are used for recording events, activities, or changes in a system or application.
+They serve as a historical record and can be used for debugging, auditing, or analysis purposes.
+Log files can be stored in various formats, such as plain text, binary, or structured formats like JSON or XML.
+
+File-based data structures are widely used in various domains, including file systems, databases, logging systems, and data processing frameworks. The choice of a specific file-based data structure depends on factors like data size, access patterns, indexing requirements, and performance considerations.
+
+## 14. Hadoop IO
+
+Hadoop I/O refers to the input/output operations performed by Hadoop during data processing. Hadoop provides a set of APIs and libraries that facilitate efficient and scalable I/O operations for big data processing in a distributed computing environment. Here are some key components and concepts related to Hadoop I/O:
+
+1. InputFormat: Hadoop InputFormat is an interface that defines how to read data from input sources and split it into logical input records. It determines how data is divided across the cluster for parallel processing. Hadoop provides various built-in InputFormat implementations for different types of data sources, such as TextInputFormat for text files, SequenceFileInputFormat for Hadoop's SequenceFile format, and more.
+
+2. OutputFormat: Hadoop OutputFormat is an interface that defines how to write data to output destinations. It specifies the format and structure of the output data and provides methods to write data in parallel to multiple output files or formats. Hadoop provides built-in OutputFormat implementations for various purposes, such as TextOutputFormat for plain text files, SequenceFileOutputFormat for Hadoop's SequenceFile format, and more.
+
+3. FileInputFormat and FileOutputFormat: These are abstract classes that provide default implementations for reading from and writing to files. They handle file-based I/O operations, such as file splitting, record reading, and writing.
+
+4. RecordReader: A RecordReader is responsible for reading data from input sources and converting it into key-value pairs, which are then processed by the Map function in Hadoop's MapReduce framework. Each input split is assigned a separate RecordReader, which reads the data in a parallel and distributed manner.
+
+5. RecordWriter: A RecordWriter is responsible for writing the output data produced by the Reduce function in Hadoop's MapReduce framework. It takes the key-value pairs generated by the Reduce function and writes them to the output destination, which could be files, databases, or other storage systems.
+
+6. Compression: Hadoop provides built-in support for data compression during I/O operations. It supports various compression codecs like Snappy, Gzip, and LZO, which can be configured to compress input data during storage and decompress it during processing, reducing storage space and improving I/O performance.
+
+7. Custom I/O Formats: Hadoop allows developers to define custom InputFormat and OutputFormat implementations to handle specialized data formats or data sources that are not covered by the built-in formats. This flexibility enables integration with various data storage systems and processing frameworks.
+
+Hadoop I/O plays a crucial role in the overall data processing pipeline in Hadoop. It enables efficient reading and writing of data from various sources, supports parallelism and scalability, and provides mechanisms for data compression and custom format handling. These capabilities make Hadoop a powerful platform for processing and analyzing large volumes of data in distributed environments.
+
+
+
+
