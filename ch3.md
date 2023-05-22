@@ -1,5 +1,4 @@
-[1](https://github.com/pritamhazra21/big-data/blob/main/ch3.md#1-how-dose-hadoop-analyse-data-)
-
+# Chapter 3
 ## 1. How dose hadoop analyse data ?
 
 Hadoop is a powerful framework for processing and analyzing large-scale data sets. It provides a distributed computing environment that can handle massive amounts of data across a cluster of computers. Here's a general overview of how Hadoop analyzes data:
