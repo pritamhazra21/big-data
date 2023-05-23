@@ -93,9 +93,27 @@ HBase Tables are divided horizontally by row key range into Regions. Regions are
 3. Zookeeper – 
 It is like a coordinator in HBase. It provides services like maintaining configuration information, naming, providing distributed synchronization, server failure notification etc. Clients communicate with region servers via zookeeper
 
+## Zookeeper
+
+In Apache HBase, ZooKeeper plays a crucial role as a coordination service and distributed system for managing and maintaining the state of the HBase cluster. ZooKeeper is responsible for several tasks within HBase, including leader election, coordination of distributed processes, and storing metadata.
+
+Here are some key functions of ZooKeeper in HBase:
+
+1. Cluster Coordination: ZooKeeper helps in coordinating the activities of the HBase cluster by maintaining information about the active region servers, their status, and the current state of regions.
+
+1. Leader Election: ZooKeeper facilitates the election of a master node in the HBase cluster. The master node is responsible for managing metadata, assigning regions to region servers, and handling administrative tasks.
+
+1. Failure Detection: ZooKeeper monitors the health of region servers and detects failures. If a region server goes down, ZooKeeper notifies the master so that it can take appropriate actions to recover or reassign the affected regions.
+
+1. Configuration Management: HBase uses ZooKeeper to store and distribute configuration information across the cluster. This includes settings such as the number of replicas, block sizes, and various HBase-specific parameters.
+
+1. Synchronization: ZooKeeper provides synchronization primitives, such as locks and barriers, which can be used by distributed HBase processes to coordinate their actions and maintain consistency.
+
+Overall, ZooKeeper acts as a distributed coordination system in HBase, ensuring that all nodes in the cluster are aware of the current state of the system and enabling reliable and consistent operations in a distributed environment.
+
 ## Advantage Disadvantage of hbase
 
-**Advantages of HBase – **
+**Advantages of HBase –**
  
 1. Can store large data sets 
 2. Database can be shared 
