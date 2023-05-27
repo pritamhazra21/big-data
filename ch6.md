@@ -482,63 +482,74 @@ These DML statements provide the necessary tools to manipulate and query data in
 HiveQL (Hive Query Language) is a SQL-like language that allows you to query and analyze data stored in Hive tables. HiveQL supports a wide range of SQL operations and provides additional features specific to the Hadoop ecosystem. Here are some examples of common HiveQL queries:
 
 1. Select All Columns from a Table:
-```
-SELECT * FROM table_name;
-```
-1. Select Specific Columns from a Table:
+   ```sql
+   SELECT * FROM table_name;
+   ```
 
-```
-SELECT column1, column2, ... FROM table_name;
-```
-2. Filter Rows with WHERE Clause:
+2. Select Specific Columns from a Table:
+   ```sql
+   SELECT column1, column2, ... FROM table_name;
+   ```
 
-```
-SELECT * FROM table_name WHERE condition;
-```
-3. Aggregation Queries:
+3. Filter Rows with WHERE Clause:
+   ```sql
+   SELECT * FROM table_name WHERE condition;
+   ```
 
-- Sum of a Column:
-```
-SELECT SUM(column_name) FROM table_name;
-```
-- Average of a Column:
-```
-SELECT AVG(column_name) FROM table_name;
-```
-- Count of Rows:
-```
-SELECT COUNT(*) FROM table_name;
-```
-4. Grouping and Aggregation:
-```
-SELECT column1, COUNT(column2) FROM table_name GROUP BY column1;
-```
-5. Sorting Rows:
-```
-SELECT * FROM table_name ORDER BY column_name [ASC|DESC];
-```
-6. Joining Tables:
-```
-SELECT * FROM table1 JOIN table2 ON table1.column_name = table2.column_name;
-```
-7. Subqueries:
-```
-SELECT * FROM table1 WHERE column_name IN (SELECT column_name FROM table2 WHERE condition);
-```
-8. Using Built-in Functions:
-```
-SELECT column1, FUNCTION(column2) FROM table_name;
-```
-9. Conditional Statements with CASE:
-```
-SELECT column1, CASE WHEN condition THEN value1 ELSE value2 END FROM table_name;
-```
-10. Limiting Results:
-```
-SELECT * FROM table_name LIMIT n;
-```
-11. Create a New Table from Query Results:
-```
-CREATE TABLE new_table_name AS SELECT * FROM table_name;
-```
+4. Aggregation Queries:
+   - Sum of a Column:
+     ```sql
+     SELECT SUM(column_name) FROM table_name;
+     ```
+
+   - Average of a Column:
+     ```sql
+     SELECT AVG(column_name) FROM table_name;
+     ```
+
+   - Count of Rows:
+     ```sql
+     SELECT COUNT(*) FROM table_name;
+     ```
+
+5. Grouping and Aggregation:
+   ```sql
+   SELECT column1, COUNT(column2) FROM table_name GROUP BY column1;
+   ```
+
+6. Sorting Rows:
+   ```sql
+   SELECT * FROM table_name ORDER BY column_name [ASC|DESC];
+   ```
+
+7. Joining Tables:
+   ```sql
+   SELECT * FROM table1 JOIN table2 ON table1.column_name = table2.column_name;
+   ```
+
+8. Subqueries:
+   ```sql
+   SELECT * FROM table1 WHERE column_name IN (SELECT column_name FROM table2 WHERE condition);
+   ```
+
+9. Using Built-in Functions:
+   ```sql
+   SELECT column1, FUNCTION(column2) FROM table_name;
+   ```
+
+10. Conditional Statements with CASE:
+    ```sql
+    SELECT column1, CASE WHEN condition THEN value1 ELSE value2 END FROM table_name;
+    ```
+
+11. Limiting Results:
+    ```sql
+    SELECT * FROM table_name LIMIT n;
+    ```
+
+12. Create a New Table from Query Results:
+    ```sql
+    CREATE TABLE new_table_name AS SELECT * FROM table_name;
+    ```
+
 These are just a few examples of HiveQL queries. HiveQL provides a rich set of SQL-like operations and functions to manipulate and analyze data in Hive tables. The queries can be customized and combined to suit specific data analysis and reporting requirements.
