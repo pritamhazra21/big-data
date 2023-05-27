@@ -51,12 +51,14 @@ The data model in Apache Pig is based on a structured, schema-less, and self-des
 Here are the key components of the Pig data model:
 
 1. Tuple: A tuple is an ordered set of fields enclosed in parentheses. It is analogous to a row in a table. Each field within a tuple is identified by its position or index, starting from 0.
+
 Example:
 ```
 (John, Doe, 25)
 ```
 
 2. Field: A field is a single value within a tuple. It can be of any Pig data type, such as int, float, chararray (string), bytearray, bag, map, or tuple.
+
 Example:
 ```
 (John, Doe, 25)
@@ -65,19 +67,21 @@ Example:
 ```
 
 3. Bag: A bag is an unordered collection of tuples. It is analogous to a set or a bag in mathematics. A bag can contain tuples of different schemas, and it allows duplicate tuples.
-Example:
 
+Example:
 ```
 {(John, Doe, 25), (Jane, Smith, 30)}
 ```
+
 4. Map: A map is an associative array that stores key-value pairs. The keys are unique within a map, and each key is associated with a value. Both keys and values can be of any Pig data type.
+
 Example:
 ```
 ['name'#'John', 'age'#25]
-
 ```
 
 5. Nested Types: Pig supports nesting of complex types within tuples, bags, and maps. This means you can have fields that are bags, maps, or tuples themselves, allowing for hierarchical and structured data representation.
+
 Example:
 ```
 (John, {(English, 90), (Math, 80)})
@@ -93,50 +97,51 @@ Pig Latin is a high-level scripting language specifically designed for data anal
 
 Here are some key features and concepts of Pig Latin:
 
-1. Data Loading: Pig Latin allows you to load data from various sources such as HDFS, local file systems, or databases. You can use the LOAD statement to specify the data source, format, and location.
+1. Data Loading: Pig Latin allows you to load data from various sources such as HDFS, local file systems, or databases. You can use the `LOAD` statement to specify the data source, format, and location.
+
 Example:
 ```
 data = LOAD 'hdfs://data/input' USING PigStorage(',') AS (name: chararray, age: int);
-
 ```
 
-2. Data Transformation: Pig Latin provides a rich set of operators to transform and manipulate data. You can use operators like FILTER, GROUP, JOIN, FOREACH, and many more to perform operations like filtering records, grouping data, joining datasets, and applying transformations to individual fields.
-Example:
+2. Data Transformation: Pig Latin provides a rich set of operators to transform and manipulate data. You can use operators like `FILTER`, `GROUP`, `JOIN`, `FOREACH`, and many more to perform operations like filtering records, grouping data, joining datasets, and applying transformations to individual fields.
 
+Example:
 ```
 filtered_data = FILTER data BY age > 18;
-
 ```
+
 3. Schema Projection: Pig Latin allows you to project only the required fields from the loaded data or intermediate results. This can help optimize performance and reduce the amount of data processed.
+
 Example:
 ```
 projected_data = FOREACH data GENERATE name, age;
-
 ```
-4. User-Defined Functions (UDFs): Pig Latin supports the use of custom functions written in programming languages like Java, Python, or JavaScript. UDFs allow you to define and apply custom logic or computations on your data.
-Example:
 
+4. User-Defined Functions (UDFs): Pig Latin supports the use of custom functions written in programming languages like Java, Python, or JavaScript. UDFs allow you to define and apply custom logic or computations on your data.
+
+Example:
 ```
 REGISTER 'myudfs.jar';
 data = FOREACH data GENERATE myudfs.myFunction(name);
-
 ```
 
-5. Storing Results: After processing the data, you can use the STORE statement to write the results to a specified location or storage system.
+5. Storing Results: After processing the data, you can use the `STORE` statement to write the results to a specified location or storage system.
+
 Example:
 ```
 STORE filtered_data INTO 'hdfs://data/output';
-
 ```
-Iterative Processing: Pig Latin also supports iterative processing using the ITERATE and UNTIL statements. This allows you to perform iterative computations on your data until a certain condition is met.
+
+6. Iterative Processing: Pig Latin also supports iterative processing using the `ITERATE` and `UNTIL` statements. This allows you to perform iterative computations on your data until a certain condition is met.
+
 Example:
 ```
 result = ITERATE input_data
          GENERATE Transform(input_data) AS transformed_data;
-
 ```
-Pig Latin provides a concise and declarative syntax for expressing complex data transformations and analyses. It abstracts the complexities of distributed processing and allows users to focus on the data transformations rather than the underlying execution framework.
 
+Pig Latin provides a concise and declarative syntax for expressing complex data transformations and analyses. It abstracts the complexities of distributed processing and allows users to focus on the data transformations rather than the underlying execution framework.
 ## Devoloping and testing
 
 When developing and testing Pig Latin scripts, you can follow these steps to ensure smooth execution and accurate results:
