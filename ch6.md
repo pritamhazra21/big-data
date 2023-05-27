@@ -306,177 +306,171 @@ The choice of data types and file formats in Hive depends on factors such as the
 In HiveQL (Hive Query Language), you can define and manipulate data structures using Data Definition Language (DDL) statements. HiveQL provides several DDL statements to create, alter, and drop tables, databases, and partitions. Here are the commonly used DDL statements in HiveQL for data definition:
 
 1. Create Database:
+   - The `CREATE DATABASE` statement is used to create a new database in Hive.
 
-The CREATE DATABASE statement is used to create a new database in Hive.
-Syntax:
-```
-CREATE DATABASE [IF NOT EXISTS] database_name
-[COMMENT 'database_comment']
-[LOCATION 'hdfs_directory']
-[WITH DBPROPERTIES (property_name=property_value, ...)];
+   Syntax:
+   ```sql
+   CREATE DATABASE [IF NOT EXISTS] database_name
+   [COMMENT 'database_comment']
+   [LOCATION 'hdfs_directory']
+   [WITH DBPROPERTIES (property_name=property_value, ...)];
+   ```
 
-```
 2. Create Table:
+   - The `CREATE TABLE` statement is used to create a new table in Hive.
 
-The CREATE TABLE statement is used to create a new table in Hive.
-Syntax:
-```
-CREATE [EXTERNAL] TABLE [IF NOT EXISTS] [database_name.]table_name
-[(col_name data_type [COMMENT col_comment], ...)]
-[COMMENT 'table_comment']
-[PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)]
-[CLUSTERED BY (col_name, col_name, ...) [SORTED BY (col_name [ASC|DESC], ...)] INTO num_buckets BUCKETS]
-[ROW FORMAT row_format]
-[STORED AS file_format]
-[LOCATION 'hdfs_directory']
-[TBLPROPERTIES (property_name=property_value, ...)];
+   Syntax:
+   ```sql
+   CREATE [EXTERNAL] TABLE [IF NOT EXISTS] [database_name.]table_name
+   [(col_name data_type [COMMENT col_comment], ...)]
+   [COMMENT 'table_comment']
+   [PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)]
+   [CLUSTERED BY (col_name, col_name, ...) [SORTED BY (col_name [ASC|DESC], ...)] INTO num_buckets BUCKETS]
+   [ROW FORMAT row_format]
+   [STORED AS file_format]
+   [LOCATION 'hdfs_directory']
+   [TBLPROPERTIES (property_name=property_value, ...)];
+   ```
 
-```
 3. Alter Table:
+   - The `ALTER TABLE` statement is used to modify the structure or properties of an existing table.
 
-The ALTER TABLE statement is used to modify the structure or properties of an existing table.
-Syntax:
-```
-ALTER TABLE [database_name.]table_name
-ADD COLUMNS (col_name data_type [COMMENT col_comment], ...);
-ALTER TABLE [database_name.]table_name
-RENAME TO new_table_name;
-ALTER TABLE [database_name.]table_name
-SET TBLPROPERTIES (property_name=property_value, ...);
-
-```
+   Syntax:
+   ```sql
+   ALTER TABLE [database_name.]table_name
+   ADD COLUMNS (col_name data_type [COMMENT col_comment], ...);
+   ALTER TABLE [database_name.]table_name
+   RENAME TO new_table_name;
+   ALTER TABLE [database_name.]table_name
+   SET TBLPROPERTIES (property_name=property_value, ...);
+   ```
 
 4. Drop Table:
+   - The `DROP TABLE` statement is used to remove an existing table from Hive.
 
-The DROP TABLE statement is used to remove an existing table from Hive.
-Syntax:
-```
-DROP TABLE [IF EXISTS] [database_name.]table_name;
-
-```
+   Syntax:
+   ```sql
+   DROP TABLE [IF EXISTS] [database_name.]table_name;
+   ```
 
 5. Create Partition:
+   - The `ALTER TABLE ... ADD PARTITION` statement is used to add a new partition to a partitioned table.
 
-The ALTER TABLE ... ADD PARTITION statement is used to add a new partition to a partitioned table.
-Syntax:
-```
-ALTER TABLE [database_name.]table_name
-ADD PARTITION (partition_spec)
-[LOCATION 'hdfs_directory'];
+   Syntax:
+   ```sql
+   ALTER TABLE [database_name.]table_name
+   ADD PARTITION (partition_spec)
+   [LOCATION 'hdfs_directory'];
+   ```
 
-```
 6. Drop Partition:
+   - The `ALTER TABLE ... DROP PARTITION` statement is used to remove a partition from a partitioned table.
 
-The ALTER TABLE ... DROP PARTITION statement is used to remove a partition from a partitioned table.
-Syntax:
-```
-ALTER TABLE [database_name.]table_name
-DROP PARTITION (partition_spec);
+   Syntax:
+   ```sql
+   ALTER TABLE [database_name.]table_name
+   DROP PARTITION (partition_spec);
+   ```
 
-```
 7. Truncate Table:
+   - The `TRUNCATE TABLE` statement is used to remove all data from an existing table, while keeping the table structure intact.
 
-The TRUNCATE TABLE statement is used to remove all data from an existing table, while keeping the table structure intact.
-Syntax:
-```
-TRUNCATE TABLE [database_name.]table_name;
-
-```
+   Syntax:
+   ```sql
+   TRUNCATE TABLE [database_name.]table_name;
+   ```
 
 These DDL statements provide the necessary tools to define and manipulate tables, databases, partitions, and their properties in Hive. They allow you to create and manage the data structures needed for data storage and querying in Hive.
-
 ## HiveQL data manipulation
 
 In HiveQL (Hive Query Language), you can manipulate data using Data Manipulation Language (DML) statements. HiveQL provides several DML statements to insert, update, delete, and query data in Hive tables. Here are the commonly used DML statements in HiveQL for data manipulation:
 
 1. Insert into Table:
+   - The `INSERT INTO` statement is used to insert data into a table.
 
-The INSERT INTO statement is used to insert data into a table.
-Syntax:
-```
-INSERT INTO [TABLE] [database_name.]table_name [PARTITION (partition_spec)]
-[VALUES (value_expr, ...), ...]
-[SELECT ...]
+   Syntax:
+   ```sql
+   INSERT INTO [TABLE] [database_name.]table_name [PARTITION (partition_spec)]
+   [VALUES (value_expr, ...), ...]
+   [SELECT ...]
+   ```
 
-```
 2. Update Table:
+   - Hive does not support direct updates to existing records. Instead, you can use the `INSERT INTO ... SELECT` statement with appropriate logic to create a new table with updated data.
 
-Hive does not support direct updates to existing records. Instead, you can use the INSERT INTO ... SELECT statement with appropriate logic to create a new table with updated data.
-Syntax:
-```
-INSERT INTO [TABLE] [database_name.]new_table_name [PARTITION (partition_spec)]
-SELECT ...
+   Syntax:
+   ```sql
+   INSERT INTO [TABLE] [database_name.]new_table_name [PARTITION (partition_spec)]
+   SELECT ...
+   ```
 
-```
 3. Delete from Table:
+   - Hive does not support direct deletion of individual records. Instead, you can use the `INSERT INTO ... SELECT` statement with appropriate logic to create a new table excluding the records you want to delete.
 
-Hive does not support direct deletion of individual records. Instead, you can use the INSERT INTO ... SELECT statement with appropriate logic to create a new table excluding the records you want to delete.
-Syntax:
-```
-INSERT INTO [TABLE] [database_name.]new_table_name [PARTITION (partition_spec)]
-SELECT ...
+   Syntax:
+   ```sql
+   INSERT INTO [TABLE] [database_name.]new_table_name [PARTITION (partition_spec)]
+   SELECT ...
+   ```
 
-```
 4. Select from Table:
+   - The `SELECT` statement is used to query data from one or more tables.
 
-The SELECT statement is used to query data from one or more tables.
-Syntax:
-```
-SELECT [ALL | DISTINCT] select_expr [, select_expr, ...]
-FROM [database_name.]table_name
-[WHERE condition]
-[GROUP BY col_name [, col_name, ...]]
-[HAVING condition]
-[ORDER BY col_name [ASC | DESC] [, col_name [ASC | DESC], ...]]
-[LIMIT n]
+   Syntax:
+   ```sql
+   SELECT [ALL | DISTINCT] select_expr [, select_expr, ...]
+   FROM [database_name.]table_name
+   [WHERE condition]
+   [GROUP BY col_name [, col_name, ...]]
+   [HAVING condition]
+   [ORDER BY col_name [ASC | DESC] [, col_name [ASC | DESC], ...]]
+   [LIMIT n]
+   ```
 
-```
 5. Join Tables:
+   - Hive supports different types of joins such as INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN, etc., to combine data from multiple tables.
 
-Hive supports different types of joins such as INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN, etc., to combine data from multiple tables.
-Syntax:
-```
-SELECT ...
-FROM table_name1
-[INNER | LEFT | RIGHT [OUTER] | FULL [OUTER]] JOIN table_name2
-ON table_name1.col_name = table_name2.col_name
+   Syntax:
+   ```sql
+   SELECT ...
+   FROM table_name1
+   [INNER | LEFT | RIGHT [OUTER] | FULL [OUTER]] JOIN table_name2
+   ON table_name1.col_name = table_name2.col_name
+   ```
 
-```
 6. Union Tables:
+   - The `UNION` statement is used to combine the result sets of multiple SELECT statements into a single result set.
 
-The UNION statement is used to combine the result sets of multiple SELECT statements into a single result set.
-Syntax:
-```
-SELECT ...
-FROM table_name1
-UNION [ALL]
-SELECT ...
-FROM table_name2
+   Syntax:
+   ```sql
+   SELECT ...
+   FROM table_name1
+   UNION [ALL]
+   SELECT ...
+   FROM table_name2
+   ```
 
-```
 7. Aggregation Functions:
+   - Hive provides various built-in aggregation functions such as SUM, AVG, MIN, MAX, COUNT, etc., to perform calculations on groups of data.
 
-Hive provides various built-in aggregation functions such as SUM, AVG, MIN, MAX, COUNT, etc., to perform calculations on groups of data.
-Syntax:
-```
-SELECT aggregation_function(column_name)
-FROM table_name
-[GROUP BY column_name]
+   Syntax:
+   ```sql
+   SELECT aggregation_function(column_name)
+   FROM table_name
+   [GROUP BY column_name]
+   ```
 
-```
 8. Subqueries:
+   - Hive supports subqueries, allowing you to use the result of one query as input for another query.
 
-Hive supports subqueries, allowing you to use the result of one query as input for another query.
-Syntax:
-```
-SELECT ...
-FROM table_name
-WHERE column_name IN (SELECT column_name FROM another_table)
-
-```
+   Syntax:
+   ```sql
+   SELECT ...
+   FROM table_name
+   WHERE column_name IN (SELECT column_name FROM another_table)
+   ```
 
 These DML statements provide the necessary tools to manipulate and query data in Hive tables. They allow you to insert, update, delete, and retrieve data from tables using various filtering, aggregation, and joining techniques.
-
 ## HiveQL queries
 
 HiveQL (Hive Query Language) is a SQL-like language that allows you to query and analyze data stored in Hive tables. HiveQL supports a wide range of SQL operations and provides additional features specific to the Hadoop ecosystem. Here are some examples of common HiveQL queries:
