@@ -63,6 +63,7 @@ NoSQL has the following disadvantages.
 ## Key Value data model
 
 A key-value data model or database is also referred to as a key-value store. It is a non-relational type of database. In this, an associative array is used as a basic database in which an individual key is linked with just one value in a collection. For the values, keys are special identifiers. Any kind of entity can be valued. The collection of key-value pairs stored on separate records is called key-value databases and they do not have an already defined structure.
+
 ![image](https://github.com/pritamhazra21/big-data/assets/75198912/c3b1dd8f-fde7-4e20-8248-a02487f8a3f0)
 
 A number of easy strings or even a complicated entity are referred to as a value that is associated with a key by a key-value database, which is utilized to monitor the entity. Like in many programming paradigms, a key-value database resembles a map object or array, or dictionary, however, which is put away in a tenacious manner and controlled by a DBMS.
