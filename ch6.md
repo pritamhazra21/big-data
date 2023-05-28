@@ -1,7 +1,3 @@
-
-Hive, data types and file formats, HiveQL data definition, HiveQL data
-manipulation, HiveQL queries.
-
 # Chapter 6
 
 ## Pig
