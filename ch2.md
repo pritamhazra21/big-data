@@ -60,7 +60,45 @@ NoSQL has the following disadvantages.
 ![image](https://github.com/pritamhazra21/big-data/assets/75198912/7c9614cc-3d15-4adb-8e56-f1074b29c19f)
 
 ## Key Value data model
-https://www.geeksforgeeks.org/key-value-data-model-in-nosql/
+
+A key-value data model or database is also referred to as a key-value store. It is a non-relational type of database. In this, an associative array is used as a basic database in which an individual key is linked with just one value in a collection. For the values, keys are special identifiers. Any kind of entity can be valued. The collection of key-value pairs stored on separate records is called key-value databases and they do not have an already defined structure.
+
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/84239e88-30b1-4508-a18b-3edc54c65dcb) 
+
+#### How do key-value databases work?
+A number of easy strings or even a complicated entity are referred to as a value that is associated with a key by a key-value database, which is utilized to monitor the entity. Like in many programming paradigms, a key-value database resembles a map object or array, or dictionary, however, which is put away in a tenacious manner and controlled by a DBMS.
+
+An efficient and compact structure of the index is used by the key-value store to have the option to rapidly and dependably find value using its key. For example, Redis is a key-value store used to tracklists, maps, heaps, and primitive types (which are simple data structures) in a constant database. Redis can uncover a very basic point of interaction to query and manipulate value types, just by supporting a predetermined number of value types,  and when arranged, is prepared to do high throughput.
+
+#### When to use a key-value database:
+Here are a few situations in which you can use a key-value database:-
+
++ User session attributes in an online app like finance or gaming, which is referred to as real-time random data access.
++ Caching mechanism for repeatedly accessing data or key-based design.
++ The application is developed on queries that are based on keys.
+#### Features:
++ One of the most un-complex kinds of NoSQL data models.
++ For storing, getting, and removing data, key-value databases utilize simple functions.
++ Querying language is not present in key-value databases.
++ Built-in redundancy makes this database more reliable.
+#### Advantages:
++ It is very easy to use. Due to the simplicity of the database, data can accept any kind, or even different kinds when required.
++ Its response time is fast due to its simplicity, given that the remaining environment near it is very much constructed and improved.
++ Key-value store databases are scalable vertically as well as horizontally.
++ Built-in redundancy makes this database more reliable.
+#### Disadvantages:
++ As querying language is not present in key-value databases, transportation of queries from one database to a different database cannot be done.
++ The key-value store database is not refined. You cannot query the database without a key.
+#### Some examples of key-value databases:
+Here are some popular key-value databases which are widely used:
+
++ Couchbase: It permits SQL-style querying and searching for text.
++ Amazon DynamoDB: The key-value database which is mostly used is Amazon DynamoDB as it is a trusted database used by a large number of users. It can easily handle a large number of requests every day and it also provides various security options.
++ Riak: It is the database used to develop applications.
++ Aerospike: It is an open-source and real-time database working with billions of exchanges.
++ Berkeley DB: It is a high-performance and open-source database providing scalability.
+
+
 ## Document data model
 A Document Data Model is a lot different than other data models because it stores data in JSON, BSON, or XML documents. in this data model, we can move documents under one document and apart from this, any particular elements can be indexed to run queries faster. Often documents are stored and retrieved in such a way that it becomes close to the data objects which are used in many applications which means very less translations are required to use data in applications. JSON is a native language that is often used to store and query data too. 
 
