@@ -1,4 +1,4 @@
-Introduction to NoSQL, aggregate data models, aggregates, key-value
+aggregate data models, aggregates, key-value
 and document data models, relationships, graph databases, schemaless
 databases, materialized views, distribution models, sharding, master-slave
 replication, peer-peer replication, sharding and replication, consistency,
@@ -12,10 +12,10 @@ NoSQL is a type of database management system (DBMS) that is designed to handle 
 The term NoSQL originally referred to “non-SQL” or “non-relational” databases, but the term has since evolved to mean “not only SQL,” as NoSQL databases have expanded to include a wide range of different database architectures and data models.
 
 ##### NoSQL databases are generally classified into four main categories:
-+ Document databases: These databases store data as semi-structured documents, such as JSON or XML, and can be queried using document-oriented query languages.
-+ Key-value stores: These databases store data as key-value pairs, and are optimized for simple and fast read/write operations.
-+ Column-family stores: These databases store data as column families, which are sets of columns that are treated as a single entity. They are optimized for fast and efficient querying of large amounts of data.
-+ Graph databases: These databases store data as nodes and edges, and are designed to handle complex relationships between data.
++ Document databases: These databases store data as semi-structured documents, such as JSON or XML, and can be queried using document-oriented query languages. Examples – MongoDB, CouchDB, Cloudant
++ Key-value stores: These databases store data as key-value pairs, and are optimized for simple and fast read/write operations. Examples – Memcached, Redis, Coherence
++ Column-family stores: These databases store data as column families, which are sets of columns that are treated as a single entity. They are optimized for fast and efficient querying of large amounts of data. Examples – Hbase, Big Table, Accumulo
++ Graph databases: These databases store data as nodes and edges, and are designed to handle complex relationships between data. Examples – Amazon Neptune, Neo4j
 
 
 ## Key feature of NoSQL.
@@ -56,6 +56,19 @@ NoSQL has the following disadvantages.
 1. GUI is not available : GUI mode tools to access the database are not flexibly available in the market.
 1. Backup : Backup is a great weak point for some NoSQL databases like MongoDB. MongoDB has no approach for the backup of data in a consistent manner.
 1. Large document size : Some database systems like MongoDB and CouchDB store data in JSON format. This means that documents are quite large (BigData, network bandwidth, speed), and having descriptive key names actually hurts since they increase the document size.
+
+## Difference between SQL and NoSQL
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/7c9614cc-3d15-4adb-8e56-f1074b29c19f)
+
+## Key Value data model
+
+A key-value data model or database is also referred to as a key-value store. It is a non-relational type of database. In this, an associative array is used as a basic database in which an individual key is linked with just one value in a collection. For the values, keys are special identifiers. Any kind of entity can be valued. The collection of key-value pairs stored on separate records is called key-value databases and they do not have an already defined structure.
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/c3b1dd8f-fde7-4e20-8248-a02487f8a3f0)
+
+A number of easy strings or even a complicated entity are referred to as a value that is associated with a key by a key-value database, which is utilized to monitor the entity. Like in many programming paradigms, a key-value database resembles a map object or array, or dictionary, however, which is put away in a tenacious manner and controlled by a DBMS.
+
+An efficient and compact structure of the index is used by the key-value store to have the option to rapidly and dependably find value using its key. For example, Redis is a key-value store used to tracklists, maps, heaps, and primitive types (which are simple data structures) in a constant database. Redis can uncover a very basic point of interaction to query and manipulate value types, just by supporting a predetermined number of value types,  and when arranged, is prepared to do high throughput.
+
 
 ## CAP theorem
 
