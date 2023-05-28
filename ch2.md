@@ -1,5 +1,4 @@
-aggregate data models, aggregates, key-value
-and document data models, relationships, graph databases, schemaless
+aggregate data models, aggregates, relationships, graph databases, schemaless
 databases, materialized views, distribution models, sharding, master-slave
 replication, peer-peer replication, sharding and replication, consistency,
 relaxing consistency, version stamps, map-reduce, partitioning and combining,
@@ -61,29 +60,9 @@ NoSQL has the following disadvantages.
 ![image](https://github.com/pritamhazra21/big-data/assets/75198912/7c9614cc-3d15-4adb-8e56-f1074b29c19f)
 
 ## Key Value data model
-
-A key-value data model or database is also referred to as a key-value store. It is a non-relational type of database. In this, an associative array is used as a basic database in which an individual key is linked with just one value in a collection. For the values, keys are special identifiers. Any kind of entity can be valued. The collection of key-value pairs stored on separate records is called key-value databases and they do not have an already defined structure.
-
-![image](https://github.com/pritamhazra21/big-data/assets/75198912/c3b1dd8f-fde7-4e20-8248-a02487f8a3f0)
-
-A number of easy strings or even a complicated entity are referred to as a value that is associated with a key by a key-value database, which is utilized to monitor the entity. Like in many programming paradigms, a key-value database resembles a map object or array, or dictionary, however, which is put away in a tenacious manner and controlled by a DBMS.
-
-An efficient and compact structure of the index is used by the key-value store to have the option to rapidly and dependably find value using its key. For example, Redis is a key-value store used to tracklists, maps, heaps, and primitive types (which are simple data structures) in a constant database. Redis can uncover a very basic point of interaction to query and manipulate value types, just by supporting a predetermined number of value types,  and when arranged, is prepared to do high throughput.
-
-##### Features:
-+ One of the most un-complex kinds of NoSQL data models.
-+ For storing, getting, and removing data, key-value databases utilize simple functions.
-+ Querying language is not present in key-value databases.
-+ Built-in redundancy makes this database more reliable.
-##### Advantages:
-+ It is very easy to use. Due to the simplicity of the database, data can accept any kind, or even different kinds when required.
-+ Its response time is fast due to its simplicity, given that the remaining environment near it is very much constructed and improved.
-+ Key-value store databases are scalable vertically as well as horizontally.
-+ Built-in redundancy makes this database more reliable.
-##### Disadvantages:
-+ As querying language is not present in key-value databases, transportation of queries from one database to a different database cannot be done.
-+ The key-value store database is not refined. You cannot query the database without a key.
-
+https://www.geeksforgeeks.org/key-value-data-model-in-nosql/
+## Document data model
+https://www.geeksforgeeks.org/document-databases-in-nosql/
 ## CAP theorem
 
 The CAP theorem, also known as Brewer's theorem, is a fundamental principle in distributed systems and database design, including NoSQL databases. It states that in a distributed system, it is impossible to simultaneously guarantee all three of the following properties:
