@@ -62,7 +62,47 @@ NoSQL has the following disadvantages.
 ## Key Value data model
 https://www.geeksforgeeks.org/key-value-data-model-in-nosql/
 ## Document data model
-https://www.geeksforgeeks.org/document-databases-in-nosql/
+A Document Data Model is a lot different than other data models because it stores data in JSON, BSON, or XML documents. in this data model, we can move documents under one document and apart from this, any particular elements can be indexed to run queries faster. Often documents are stored and retrieved in such a way that it becomes close to the data objects which are used in many applications which means very less translations are required to use data in applications. JSON is a native language that is often used to store and query data too. 
+
+So in the document data model, each document has a key-value pair below is an example for the same.
+```
+{
+"Name" : "Yashodhra",
+"Address" : "Near Patel Nagar",
+"Email" : "yahoo123@yahoo.com",
+"Contact" : "12345"
+}
+```
+##### Working of Document Data Model: 
+This is a data model which works as a semi-structured data model in which the records and data associated with them are stored in a single document which means this data model is not completely unstructured. The main thing is that data here is stored in a document.
+
+##### Features:
+Document Type Model: As we all know data is stored in documents rather than tables or graphs, so it becomes easy to map things in many programming languages.
+Flexible Schema: Overall schema is very much flexible to support this statement one must know that not all documents in a collection need to have the same fields.
+Distributed and Resilient: Document data models are very much dispersed which is the reason behind horizontal scaling and distribution of data.
+Manageable Query Language: These data models are the ones in which query language allows the developers to perform CRUD (Create Read Update Destroy) operations on the data model. 
+##### Examples of Document Data Models :
+
+Amazon DocumentDB
+MongoDB
+Cosmos DB
+ArangoDB
+Couchbase Server
+CouchDB
+##### Advantages:
++ Schema-less: These are very good in retaining existing data at massive volumes because there are absolutely no restrictions in the format and the structure of data storage. 
++ Faster creation of document and maintenance: It is very simple to create a document and apart from this maintenance requires is almost nothing.
++ Open formats: It has a very simple build process that uses XML, JSON, and its other forms.
++ Built-in versioning: It has built-in versioning which means as the documents grow in size there might be a chance they can grow in complexity. Versioning decreases conflicts.
+##### Disadvantages:
++ Weak Atomicity: It lacks in supporting multi-document ACID transactions. A change in the document data model involving two collections will require us to run two separate queries i.e. one for each collection. This is where it breaks atomicity requirements.
++ Consistency Check Limitations: One can search the collections and documents that are not connected to an author collection but doing this might create a problem in the performance of database performance.
++ Security: Nowadays many web applications lack security which in turn results in the leakage of sensitive data. So it becomes a point of concern, one must pay attention to web app vulnerabilities.
+##### Applications of Document Data Model :
++ Content Management: These data models are very much used in creating various video streaming platforms, blogs, and similar services Because each is stored as a single document and the database here is much easier to maintain as the service evolves over time.
++ Book Database: These are very much useful in making book databases because as we know this data model lets us nest.
++ Catalog: When it comes to storing and reading catalog files these data models are very much used because it has a fast reading ability if incase Catalogs have thousands of attributes stored.
++ Analytics Platform: These data models are very much used in the Analytics Platform.
 ## CAP theorem
 
 The CAP theorem, also known as Brewer's theorem, is a fundamental principle in distributed systems and database design, including NoSQL databases. It states that in a distributed system, it is impossible to simultaneously guarantee all three of the following properties:
