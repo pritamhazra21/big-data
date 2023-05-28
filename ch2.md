@@ -1,8 +1,4 @@
-aggregate data models, aggregates, relationships, graph databases, schemaless
-databases, materialized views, distribution models, sharding, master-slave
-replication, peer-peer replication, sharding and replication, consistency,
-relaxing consistency, version stamps, map-reduce, partitioning and combining,
-composing map-reduce calculations. 
+# Chapter 2
 
 ## What is NoSQL? types of NoSQL.
 
