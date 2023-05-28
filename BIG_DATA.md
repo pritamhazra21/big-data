@@ -333,7 +333,7 @@ It's important to note that effective crowdsourcing analytics requires careful d
 
 
 
-# Chapter 2
+# Chapter 2 NoSQL
 
 ## What is NoSQL? types of NoSQL.
 
@@ -488,7 +488,7 @@ NoSQL databases, which are designed to scale horizontally and handle large volum
 
 It's important to note that the CAP theorem does not imply that a system can only have two out of the three properties. Instead, it states that during a network partition, a system must make a trade-off between consistency and availability. Different NoSQL databases make different choices depending on their specific design goals and requirements, resulting in various consistency models such as eventual consistency, strong eventual consistency, or causal consistency.
 
-# Chapter 3
+# Chapter 3 HADOOP - HDFS
 ## 1. How dose hadoop analyse data ?
 
 Hadoop is a powerful framework for processing and analyzing large-scale data sets. It provides a distributed computing environment that can handle massive amounts of data across a cluster of computers. Here's a general overview of how Hadoop analyzes data:
@@ -873,7 +873,7 @@ Serialization in Hadoop enables efficient storage and transfer of data by conver
 
 
 
-# Chapter 4
+# Chapter 4 MapReduce
 ## 1. MapReduce workflow
 
 MapReduce is a programming model and software framework used for processing and analyzing large data sets in a distributed computing environment. It was popularized by Google and has become widely adopted in the field of big data analytics. The MapReduce framework breaks down a data processing task into two main phases: the map phase and the reduce phase.
@@ -1240,7 +1240,7 @@ In Hadoop and YARN, various types of failures can occur due to hardware issues, 
 To mitigate the impact of failures, Hadoop and YARN employ fault tolerance mechanisms, such as automatic recovery, task re-execution, redundancy, and resource management strategies. These mechanisms help ensure the reliable and continuous operation of the cluster, even in the presence of failures.
 
 
-# Chapter 5
+# Chapter 5 HBase
 
 ## 1. What is HBase ?
 
@@ -1650,25 +1650,10 @@ By integrating Cassandra with Hadoop ecosystem components, you can take advantag
 
 ## Diference between Cassendra and RDBMS
 
-|S.No. |	CASSANDRA	| RDBMS|
-|--|--|--|
-|1.|	Cassandra is a high performance and highly scalable distributed NoSQL database management system.	|RDBMS is a Database management system or |software which is designed for relational databases.|
-|2.	|Cassandra is a NoSQL database.|	RDBMS uses SQL for querying and maintaining the database.|
-|3.	|It deals with unstructured data.|	It deals with structured data.|
-|4.	|It has a flexible schema.|	It has fixed schema.|
-|5.	|Cassandra has peer-to-peer architecture with no single point of failure.|	RDBMS has master-slave core architecture means a single point of failure.|
-|6.	|Cassandra handles high volume incoming data velocity.|	RDBMS handles moderate incoming data velocity.|
-|7.	|In RDBMS there is limited data source means data come from many locations.	|In Cassandra there are various data source means data come from one few locaion.|
-|8.	|It supports simple transactions.|	It supports complex and nested transactions.|
-|9.	|In Cassandra the outermost container is Keyspace.|	In RDBMS the outermost container is database.|
-|10.	|Cassandra follows decentralized deployments.	|RDBMS follows centralized deployments.|
-|11.	|In Cassandra data written in many locations.|	In RDBMS mainly data are written in one location.|
-|12.|	In Cassandra row represents a unit of replication.|	In RDBMS row represents a single record.|
-|13.|	In Cassandra column represents a unit of storage.	|In RDBMS column represents an attribute.|
-|14.	|In Cassandra, relationships are represented using collections.|	In RDBMS relationships are represented using keys and join etc.|
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/30ab0efc-ab53-407e-93b6-883bcf8a9bd3)
 
 
-# Chapter 6
+# Chapter 6 PIG - HIVE
 
 ## Pig
 
