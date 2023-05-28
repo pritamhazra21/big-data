@@ -115,18 +115,18 @@ So in the document data model, each document has a key-value pair below is an ex
 This is a data model which works as a semi-structured data model in which the records and data associated with them are stored in a single document which means this data model is not completely unstructured. The main thing is that data here is stored in a document.
 
 ##### Features:
-Document Type Model: As we all know data is stored in documents rather than tables or graphs, so it becomes easy to map things in many programming languages.
-Flexible Schema: Overall schema is very much flexible to support this statement one must know that not all documents in a collection need to have the same fields.
-Distributed and Resilient: Document data models are very much dispersed which is the reason behind horizontal scaling and distribution of data.
-Manageable Query Language: These data models are the ones in which query language allows the developers to perform CRUD (Create Read Update Destroy) operations on the data model. 
++ Document Type Model: As we all know data is stored in documents rather than tables or graphs, so it becomes easy to map things in many programming languages.
++ Flexible Schema: Overall schema is very much flexible to support this statement one must know that not all documents in a collection need to have the same fields.
++ Distributed and Resilient: Document data models are very much dispersed which is the reason behind horizontal scaling and distribution of data.
++ Manageable Query Language: These data models are the ones in which query language allows the developers to perform CRUD (Create Read Update Destroy) operations on the data model. 
 ##### Examples of Document Data Models :
 
-Amazon DocumentDB
-MongoDB
-Cosmos DB
-ArangoDB
-Couchbase Server
-CouchDB
++ Amazon DocumentDB
++ MongoDB
++ Cosmos DB
++ ArangoDB
++ Couchbase Server
++ CouchDB
 ##### Advantages:
 + Schema-less: These are very good in retaining existing data at massive volumes because there are absolutely no restrictions in the format and the structure of data storage. 
 + Faster creation of document and maintenance: It is very simple to create a document and apart from this maintenance requires is almost nothing.
