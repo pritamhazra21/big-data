@@ -6,6 +6,8 @@
 Big Data is a collection of data that is huge in volume, yet growing exponentially with time. It is a data with so large size and complexity that none of traditional data management tools can store it or process it efficiently. Big data is also a data but with huge size.
 ## 5V's
 The "5 Vs" of big data are a framework used to describe the key characteristics or dimensions of big data. These dimensions help in understanding the unique challenges and opportunities associated with working with large and complex datasets. The 5 Vs are:
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/be3967fb-7533-4175-916d-f7d983091a4e)
+
 
 1. **Volume**: Volume refers to the sheer amount of data generated and collected. Big data involves working with extremely large datasets that surpass the storage and processing capacities of traditional systems. The volume of data can range from terabytes to petabytes and even exabytes.
 
@@ -1531,25 +1533,41 @@ It's important to note that while Cassandra and HBase are both distributed NoSQL
 
 ## Cassandra data model
 
-The data model in Cassandra is based on a wide-column store paradigm, also known as a column-family data model. It is designed to provide high scalability, flexibility, and performance for distributed data storage and retrieval. Here are the key components of the data model in Cassandra:
+Cassandra database is distributed over several machines that operate together. The outermost container is known as the Cluster. For failure handling, every node contains a replica, and in case of a failure, the replica takes charge. Cassandra arranges the nodes in a cluster, in a ring format, and assigns data to them.
 
-1. Keyspace: In Cassandra, data is organized into keyspaces, which are top-level containers that group related tables. A keyspace defines the replication strategy and other configuration settings for the data it contains.
+#### Keyspace
+Keyspace is the outermost container for data in Cassandra. The basic attributes of a Keyspace in Cassandra are −
 
-2. Table: Tables in Cassandra are similar to tables in a relational database. Each table consists of rows and columns. Unlike traditional relational databases, tables in Cassandra are sparse, meaning that different rows can have different sets of columns.
++ Replication factor − It is the number of machines in the cluster that will receive copies of the same data.
 
-3. Partition Key: Each row in a Cassandra table is uniquely identified by a partition key. The partition key is responsible for data distribution across the cluster and determines the physical placement of data on different nodes. It is used to determine which node is responsible for storing and serving a particular row.
++ Replica placement strategy − It is nothing but the strategy to place replicas in the ring. We have strategies such as simple strategy (rack-aware strategy), old network topology strategy (rack-aware strategy), and network topology strategy (datacenter-shared strategy).
 
-4. Clustering Columns: Clustering columns are used to establish the ordering of rows within a partition. They determine the sort order of rows when retrieving data. Clustering columns are optional and allow for efficient range queries and sorting within a partition.
++ Column families − Keyspace is a container for a list of one or more column families. A column family, in turn, is a container of a collection of rows. Each row contains ordered columns. Column families represent the structure of your data. Each keyspace has at least one and often many column families.
 
-5. Regular Columns: Regular columns are the actual data values stored in the table. They are grouped into column families, which are logical groups of related columns. The number of regular columns can vary from row to row.
+The syntax of creating a Keyspace is as follows −
+```sql
+CREATE KEYSPACE Keyspace name
+WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 3};
+```
+The following illustration shows a schematic view of a Keyspace.
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/0c6aed4a-fbfb-451d-9e9e-56dbbc176a56)
+#### Column Family
+A column family is a container for an ordered collection of rows. Each row, in turn, is an ordered collection of columns. The following table lists the points that differentiate a column family from a table of relational databases.
 
-6. Static Columns: Static columns are similar to regular columns, but their values are shared among all rows within a partition. They are useful when you have data that is common to multiple rows within a partition and want to avoid duplicating the data.
 
-7. Primary Key: The primary key in Cassandra is composed of the partition key and, optionally, clustering columns. It uniquely identifies a row within a table. The primary key determines the physical storage and retrieval of data.
 
-8. Secondary Indexes: Cassandra supports secondary indexes on individual columns, allowing for efficient querying based on non-primary key attributes. However, the use of secondary indexes should be carefully considered, as they can impact performance and scalability.
+The following figure shows an example of a Cassandra column family.
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/9ddf3c23-438c-4050-af7a-88db02165c6a)
+### Column
+A column is the basic data structure of Cassandra with three values, namely key or column name, value, and a time stamp. Given below is the structure of a column.
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/062b9b6b-4c46-483d-8336-9539fb78a532)
 
-The data model in Cassandra is optimized for high write and read performance, distributed data storage, and horizontal scalability. It is designed to handle massive amounts of data and provide low-latency access. When designing the data model in Cassandra, it is important to carefully consider the access patterns, query requirements, and data distribution to optimize performance and ensure efficient data retrieval.
+#### SuperColumn
+A super column is a special column, therefore, it is also a key-value pair. But a super column stores a map of sub-columns.
+
+Generally column families are stored on disk in individual files. Therefore, to optimize performance, it is important to keep columns that you are likely to query together in the same column family, and a super column can be helpful here.Given below is the structure of a super column.
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/2ef63900-6f4b-4369-b776-43085fbb10d9)
+
 
 ## Cassendra architecture
 
@@ -1964,6 +1982,9 @@ Hive supports additional file formats and can also work with custom file formats
 
 The choice of data types and file formats in Hive depends on factors such as the nature of the data, query patterns, performance requirements, and integration with other tools and systems in the Hadoop ecosystem.
 
+## Hive architecture
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/b2e1f0ec-0ca6-4c05-a331-6e84feff0f3b)
+https://www.javatpoint.com/hive-architecture
 ## Hive data defination
 
 In HiveQL (Hive Query Language), you can define and manipulate data structures using Data Definition Language (DDL) statements. HiveQL provides several DDL statements to create, alter, and drop tables, databases, and partitions. Here are the commonly used DDL statements in HiveQL for data definition:
