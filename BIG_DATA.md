@@ -547,6 +547,13 @@ HDFS follows a master-slave architecture with a NameNode as the master and DataN
 - DataNodes store blocks as separate files on their local storage.
 - The coordination between the NameNode and DataNodes enables fault tolerance, efficient data storage, replication, and retrieval in HDFS.
 In summary, the NameNode manages the metadata and coordination, while DataNodes handle block storage and replication, forming a distributed and fault-tolerant storage system in HDFS
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/6c1bd934-4600-4950-98e5-8ad24e25a952)
+
+
+
+## What is secondary namenode ?
+The secondary NameNode merges the fsimage and the edits log files periodically and keeps edits log size within a limit. It is usually run on a different machine than the primary NameNode since its memory requirements are on the same order as the primary NameNode.
+![image](https://github.com/pritamhazra21/big-data/assets/75198912/5ae0e273-91b3-45df-8773-057634eb3be9)
 
 
 ## 4. Explain Hadoop streaming.
